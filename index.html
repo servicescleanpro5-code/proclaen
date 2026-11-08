@@ -8,7 +8,7 @@
     /* التصميم العام */
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     
-    /* الصورة فخلفية الموقع */
+    /* الخلفية */
     body { 
         margin: 0; 
         background-image: url('b58c1592-4907-4a5e-88f2-510c7029191c.png'); 
@@ -16,73 +16,69 @@
         background-attachment: fixed; 
         background-position: center; 
         background-repeat: no-repeat;
-        color: #24352b; 
+        color: #f8fafc; 
     }
 
-    /* الطبقة الشفافة فوق الصورة باش الكتابة تبان */
+    /* الطبقة الشفافة الكحلة فوق الصورة */
     body::before {
         content: "";
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.6); 
+        background: rgba(15, 23, 42, 0.9); /* كحلة داكنة باش تبان الكتابة */
         z-index: -1;
     }
 
     /* القائمة الفوقية */
-    .navbar { background: #1a1a1a; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .navbar .logo-nav { color: white; font-size: 22px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a { color: #a0b0a7; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
-    .nav-links a:hover { color: #4ade80; }
+    .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; }
+    .navbar .logo-nav { color: white; font-size: 24px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: #1e293b; padding: 8px 15px; border-radius: 6px; }
 
-    /* الهيدر */
-    header { background: #087b48; color: white; padding: 40px 20px; text-align: center; }
-    header h1 { margin: 0; font-size: 36px; letter-spacing: 2px; }
-    header p { margin: 10px 0 0; font-size: 16px; opacity: 0.9; }
-    
-    /* القسم الرئيسي */
-    .hero { padding: 60px 20px; text-align: center; }
-    .hero h2 { color: #4ade80; margin-bottom: 10px; font-size: 28px; text-shadow: 1px 1px 2px #000; }
-    .hero p { font-size: 18px; line-height: 1.6; color: #fff; max-width: 700px; margin: auto; font-weight: bold; text-shadow: 1px 1px 2px #000; }
-    
+    /* الهيدر (الترحيب) */
+    header { text-align: center; padding: 60px 20px 40px; }
+    header h1 { color: #fff; font-size: 42px; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 1px 1px 3px #000; }
+    header p { color: #3b82f6; font-size: 18px; font-weight: bold; text-shadow: 1px 1px 2px #000; }
+
     /* الأقسام العامة */
-    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
-    h3 { text-align: center; color: #087b48; margin-bottom: 30px; font-size: 26px; text-shadow: 1px 1px 2px #fff; }
+    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+    h2 { text-align: center; color: #fff; margin-bottom: 40px; font-size: 30px; text-shadow: 1px 1px 2px #000; }
+    h2 span { color: #3b82f6; } 
     
-    /* قسم علاش BRECOL */
-    .features-section { background: #24352b; padding: 50px 20px; color: white; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-    .features-section h3 { color: white; margin-bottom: 40px; font-size: 28px; }
-    .features-section h3 span { color: #4ade80; } 
+    /* قسم علاش BRECOL (الكحل) */
+    .features-section { background: #0f172a; padding: 50px 20px; border-radius: 15px; margin-bottom: 40px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
-    .feature-box { background: #1a261f; padding: 25px; border-radius: 12px; border: 1px solid #364a3e; text-align: center; transition: transform 0.3s; }
-    .feature-box:hover { transform: translateY(-5px); border-color: #4ade80; }
-    .feature-icon { font-size: 40px; margin-bottom: 15px; }
-    .feature-box h4 { font-size: 18px; margin: 10px 0; color: white; }
-    .feature-box p { font-size: 14px; color: #a0b0a7; margin: 0; }
+    
+    /* الصناديق (الأيقونات التفاعلية) */
+    .feature-box { background: #1e293b; padding: 30px 20px; border-radius: 12px; border: 1px solid #334155; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+    .feature-box:hover { transform: translateY(-10px); background: #0f172a; border-color: #3b82f6; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
+    .feature-icon { font-size: 45px; margin-bottom: 15px; transition: transform 0.3s ease; display: inline-block; }
+    .feature-box:hover .feature-icon { transform: scale(1.2); } /* الأيقونة كتكبر */
+    .feature-box h4 { font-size: 20px; margin: 10px 0; color: #fff; }
+    .feature-box p { font-size: 14px; color: #94a3b8; margin: 0; }
 
     /* --- تصميم الفورمولير --- */
-    .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #1a1a1a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #0f172a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #334155; }
     
-    .booking-form { background: #0f0f0f; padding: 30px; border-radius: 12px; border: 1px solid #333; }
-    .booking-form h4 { color: white; margin-top: 0; margin-bottom: 25px; font-size: 22px; border-bottom: 2px solid #087b48; padding-bottom: 10px; display: inline-block; }
+    .booking-form h4 { color: #fff; margin-top: 0; margin-bottom: 25px; font-size: 22px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; display: inline-block; }
     
     .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; color: #a0b0a7; font-size: 13px; margin-bottom: 5px; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #444; border-radius: 6px; color: white; font-size: 14px; transition: 0.3s; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #087b48; outline: none; background: #111; }
+    .form-group label { display: block; color: #94a3b8; font-size: 13px; margin-bottom: 5px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px; background: #1e293b; border: 1px solid #334155; border-radius: 6px; color: white; font-size: 15px; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #3b82f6; outline: none; background: #0f172a; }
     
-    .booking-form button { width: 100%; padding: 15px; background: #087b48; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
-    .booking-form button:hover { background: #065c36; }
+    .booking-form button { width: 100%; padding: 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
+    .booking-form button:hover { background: #2563eb; }
 
     /* النص الترويجي فالفورمولير */
-    .booking-info { padding: 20px; color: #a0b0a7; }
-    .booking-info h4 { color: white; font-size: 22px; margin-top: 0; }
+    .booking-info { padding: 20px; color: #94a3b8; }
+    .booking-info h4 { color: #fff; font-size: 22px; margin-top: 0; }
     .booking-info p { line-height: 1.8; font-size: 15px; margin-bottom: 15px; }
-    .booking-info ul { padding-right: 20px; line-height: 2; color: #d1d5db; }
-    .booking-info ul li { color: #4ade80; font-weight: bold; }
+    .booking-info ul { padding-right: 20px; line-height: 2; color: #cbd5e1; }
+    .booking-info ul li { color: #3b82f6; font-weight: bold; }
 
     /* التذييل */
-    footer { background: #087b48; color: white; text-align: center; padding: 20px; margin-top: 50px; font-size: 14px; }
+    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px; margin-top: 50px; border-top: 1px solid #334155; font-size: 14px; }
     footer p { margin: 5px 0; }
 
     /* للهواتف */
@@ -97,7 +93,7 @@
 <nav class="navbar">
     <a href="index.html" class="logo-nav">BRECOL</a>
     <div class="nav-links">
-        <a href="index.html">الرئيسية | Home</a>
+        <a href="index.html" class="active">الرئيسية | Home</a>
         <a href="services.html">الخدمات | Services</a>
         <a href="#features">علاش BRECOL | A propos</a>
         <a href="#booking">احجز الآن | Réserver</a>
@@ -109,13 +105,8 @@
     <p>جميع خدمات الحرف والتنظيف | Tous les services de bricolage</p>
 </header>
 
-<div class="hero">
-    <h2>مرحباً بكم في BRECOL</h2>
-    <p>نقدم لكم خدمات احترافية متنوعة. اكتشف خدماتنا أو احجز موعدك الآن بكل سهولة!</p>
-</div>
-
 <section id="features" class="features-section">
-    <h3>Pourquoi <span>BRECOL</span> ? | علاش BRECOL؟</h3>
+    <h2>Pourquoi <span>BRECOL</span> ? | علاش BRECOL؟</h2>
     <div class="features-grid">
         <div class="feature-box">
             <div class="feature-icon">⚡</div>
@@ -141,7 +132,7 @@
 </section>
 
 <section id="booking">
-    <h3 style="text-align: right; color: #fff; margin-bottom: 20px; text-shadow: 1px 1px 2px #000;">Formulaire de réservation | نموذج الحجز</h3>
+    <h2 style="text-align: right; margin-bottom: 20px;">Formulaire de réservation | نموذج الحجز</h2>
     
     <div class="booking-container">
         <!-- الفورمولير -->
@@ -157,12 +148,15 @@
                     <label>نوع الخدمة *</label>
                     <select id="service" required>
                         <option value="">اختر الحرفة أو الخدمة</option>
-                        <option value="السباكة">السباكة</option>
-                        <option value="الكهرباء">الكهرباء</option>
-                        <option value="النجارة">النجارة</option>
-                        <option value="الصباغة">الصباغة</option>
-                        <option value="البناء والتبليط">البناء والتبليط</option>
-                        <option value="التنظيف">التنظيف</option>
+                        <option value="تركيب التلفزات">تركيب التلفزات</option>
+                        <option value="تركيب الكاميرات">تركيب الكاميرات</option>
+                        <option value="تركيب الستلايت">تركيب الستلايت</option>
+                        <option value="تركيب الخيام">تركيب الخيام</option>
+                        <option value="التركيب والمونتاج">التركيب والمونتاج</option>
+                        <option value="النقل">النقل</option>
+                        <option value="غسيل السيارات">غسيل السيارات</option>
+                        <option value="تنظيف شامل">تنظيف شامل</option>
+                        <option value="تنظيف الزجاج">تنظيف الزجاج</option>
                     </select>
                 </div>
 
