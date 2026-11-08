@@ -8,7 +8,7 @@
     /* التصميم العام */
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     
-    /* الصورة فخلفية الموقع */
+    /* الخلفية (نفس الصورة اللي عندك) */
     body { 
         margin: 0; 
         background-image: url('b58c1592-4907-4a5e-88f2-510c7029191c.png'); 
@@ -16,88 +16,51 @@
         background-attachment: fixed; 
         background-position: center; 
         background-repeat: no-repeat;
-        color: #24352b; 
+        color: #f8fafc; 
     }
 
-    /* الطبقة الشفافة فوق الصورة */
+    /* الطبقة الشفافة باش الجدول يبان */
     body::before {
         content: "";
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.8); 
+        background: rgba(0, 0, 0, 0.7); /* كحلة شفافة */
         z-index: -1;
     }
 
     /* القائمة الفوقية */
-    .navbar { background: #1a1a1a; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .navbar .logo-nav { color: white; font-size: 22px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a { color: #a0b0a7; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
-    .nav-links a:hover, .nav-links a.active { color: #4ade80; }
+    .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; }
+    .navbar .logo-nav { color: white; font-size: 24px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: #1e293b; padding: 8px 15px; border-radius: 6px; }
 
-    /* عنوان الصفحة */
-    .page-title { text-align: center; padding: 30px 20px 10px; color: #fff; }
-    .page-title h1 { font-size: 36px; margin-bottom: 10px; text-shadow: 1px 1px 3px #000; }
-    .page-title p { font-size: 18px; color: #4ade80; font-weight: bold; }
-
-    /* --- تصميم السلايدر --- */
-    .slider-container {
-        max-width: 900px;
-        margin: 20px auto;
-        position: relative;
-        overflow: hidden;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border: 3px solid #087b48;
-    }
-    .slider {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        width: 100%;
-    }
-    .slider img {
-        width: 100%;
-        height: 450px; /* تقدر تبدل الطول ديال الصور هنا */
-        object-fit: cover; /* باش الصورة تتقصا مزيان بلا ما تتخربق */
-        flex-shrink: 0;
-    }
-
-    /* أزرار السلايدر */
-    .slider-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        border: none;
-        padding: 15px 20px;
-        cursor: pointer;
-        font-size: 24px;
-        border-radius: 50%;
-        transition: 0.3s;
-    }
-    .slider-btn:hover { background: #087b48; }
-    .prev { right: 10px; }
-    .next { left: 10px; }
-
-    /* الأقسام */
-    section { padding: 30px 20px; max-width: 1000px; margin: auto; }
-    .category-title { color: #fff; font-size: 22px; border-right: 4px solid #4ade80; padding-right: 15px; margin-bottom: 20px; }
+    /* الحاوية الرئيسية */
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
     
-    /* شبكة الخدمات المختصرة */
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 40px; }
-    .service-card { background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid #333; text-align: center; transition: 0.3s; }
-    .service-card:hover { transform: translateY(-3px); border-color: #4ade80; }
-    .service-card h4 { color: #fff; margin: 0; font-size: 16px; }
+    /* العنوان */
+    h1 { font-size: 28px; margin-bottom: 20px; font-weight: 600; text-shadow: 1px 1px 3px #000; color: #fff; }
+    
+    /* خانة البحث */
+    .search-box { width: 100%; padding: 15px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: white; font-size: 16px; margin-bottom: 20px; outline: none; transition: 0.3s; }
+    .search-box:focus { border-color: #3b82f6; }
+
+    /* الجدول (بحال MIDO) */
+    .table-container { background: #0f172a; border-radius: 10px; overflow: hidden; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    table { width: 100%; border-collapse: collapse; text-align: right; }
+    th { background: #1e293b; color: #cbd5e1; padding: 15px 20px; font-weight: bold; font-size: 15px; border-bottom: 1px solid #334155; }
+    td { padding: 15px 20px; border-bottom: 1px solid #1e293b; color: #e2e8f0; font-size: 15px; }
+    tr:hover { background: #1e293b; }
+    td a { color: #3b82f6; text-decoration: none; font-weight: bold; }
+    td a:hover { text-decoration: underline; }
 
     /* التذييل */
-    footer { background: #1a1a1a; color: #a0b0a7; text-align: center; padding: 20px; margin-top: 50px; font-size: 14px; }
-    footer p { margin: 5px 0; }
+    footer { text-align: center; padding: 30px; color: #94a3b8; border-top: 1px solid #334155; margin-top: 50px; font-size: 14px; background: #0f172a; }
 
     /* للهواتف */
     @media (max-width: 768px) {
         .nav-links { display: none; }
-        .slider img { height: 250px; }
+        th, td { padding: 10px; font-size: 14px; }
     }
 </style>
 </head>
@@ -113,85 +76,61 @@
     </div>
 </nav>
 
-<div class="page-title">
-    <h1>Nos Services | خدماتنا</h1>
-    <p>نقدم لكم مجموعة شاملة من الخدمات الاحترافية</p>
+<div class="container">
+    <h1>Liste de nos services | لائحة الخدمات</h1>
+    
+    <!-- خانة البحث -->
+    <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن خدمة... | Rechercher un service...">
+
+    <!-- الجدول -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>الخدمة | Service</th>
+                    <th>القسم | Catégorie</th>
+                    <th>الإجراء | Action</th>
+                </tr>
+            </thead>
+            <tbody id="servicesTable">
+                <!-- الإلكترونيات -->
+                <tr><td>تركيب التلفزات</td><td>إلكترونيات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <tr><td>تركيب الكاميرات</td><td>إلكترونيات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <tr><td>تركيب الستلايت</td><td>إلكترونيات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <!-- الخيام -->
+                <tr><td>تركيب الخيام</td><td>خيام</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <!-- التقنية -->
+                <tr><td>التركيب والمونتاج</td><td>تقنية</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <tr><td>النقل</td><td>تقنية</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <!-- السيارات -->
+                <tr><td>غسيل السيارات</td><td>سيارات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <!-- التنظيف -->
+                <tr><td>تنظيف شامل</td><td>تنظيف</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+                <tr><td>تنظيف الزجاج</td><td>تنظيف</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<!-- السلايدر (Slider) -->
-<div class="slider-container">
-    <div class="slider" id="slider">
-        <!-- الصور اللي حملتي -->
-        <img src="img2.j2p.png" alt="Service BRECOL">
-        <img src="img2.jpg.png" alt="Service BRECOL">
-        <img src="img2.jpg3.png" alt="Service BRECOL">
-        <img src="img4.png.png" alt="Service BRECOL">
-        <img src="img5.png.png" alt="Service BRECOL">
-        <img src="img6.png.png" alt="Service BRECOL">
-    </div>
-    <button class="slider-btn prev" onclick="moveSlide(-1)">&#10095;</button>
-    <button class="slider-btn next" onclick="moveSlide(1)">&#10094;</button>
-</div>
-
-<!-- الخدمات مختصرين -->
-<section>
-    <h2 class="category-title">الإلكترونيات | Électronique</h2>
-    <div class="services">
-        <div class="service-card"><h4>📺 تركيب التلفزات</h4></div>
-        <div class="service-card"><h4>📹 تركيب الكاميرات</h4></div>
-        <div class="service-card"><h4>📡 تركيب الستلايت</h4></div>
-    </div>
-
-    <h2 class="category-title">الخيام | Tentes</h2>
-    <div class="services">
-        <div class="service-card"><h4>⛺ تركيب الخيام</h4></div>
-    </div>
-
-    <h2 class="category-title">الخدمات التقنية | Technique</h2>
-    <div class="services">
-        <div class="service-card"><h4>🔧 التركيب والمونتاج</h4></div>
-        <div class="service-card"><h4>🚚 النقل</h4></div>
-    </div>
-
-    <h2 class="category-title">السيارات | Auto</h2>
-    <div class="services">
-        <div class="service-card"><h4>🚗 غسيل السيارات</h4></div>
-    </div>
-
-    <h2 class="category-title">التنظيف | Nettoyage</h2>
-    <div class="services">
-        <div class="service-card"><h4>🧹 تنظيف شامل</h4></div>
-        <div class="service-card"><h4>🪟 تنظيف الزجاج</h4></div>
-    </div>
-</section>
 
 <footer>
     <p>© 2026 BRECOL - جميع الحقوق محفوظة</p>
 </footer>
 
 <script>
-    let currentIndex = 0;
-    const slider = document.getElementById('slider');
-    const totalSlides = slider.children.length;
-
-    function moveSlide(direction) {
-        currentIndex += direction;
-        if (currentIndex < 0) {
-            currentIndex = totalSlides - 1;
-        } else if (currentIndex >= totalSlides) {
-            currentIndex = 0;
-        }
-        updateSlider();
-    }
-
-    function updateSlider() {
-        slider.style.transform = `translateX(${currentIndex * 100}%)`;
-    }
-
-    // تبديل الصور أوتوماتيكياً كل 3 ثواني
-    setInterval(() => {
-        moveSlide(1);
-    }, 3000);
+    // كود البحث في الجدول
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#servicesTable tr');
+        
+        rows.forEach(row => {
+            let text = row.textContent.toLowerCase();
+            if(text.includes(filter)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
 </script>
 
 </body>
