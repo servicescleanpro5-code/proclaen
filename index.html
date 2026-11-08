@@ -7,11 +7,29 @@
 <style>
     /* التصميم العام */
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { margin: 0; background: #f4f9f4; color: #24352b; }
     
+    /* الصورة فخلفية الموقع */
+    body { 
+        margin: 0; 
+        background-image: url('ae28895b-111a-4b.png'); /* سمية الصورة اللي حملتي */
+        background-size: cover; 
+        background-attachment: fixed; 
+        background-position: center; 
+        color: #24352b; 
+    }
+
+    /* الطبقة الشفافة فوق الصورة باش الكتابة تبان */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(255, 255, 255, 0.85); /* طبقة بيضاء شفافة */
+        z-index: -1;
+    }
+
     /* القائمة الفوقية */
-    .navbar { background: #1a1a1a; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-    .navbar .logo-nav { color: white; font-size: 22px; font-weight: bold; text-decoration: none; }
+    .navbar { background: #1a1a1a; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .navbar .logo-nav { color: white; font-size: 22px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
     .nav-links { display: flex; gap: 20px; }
     .nav-links a { color: #a0b0a7; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
     .nav-links a:hover { color: #4ade80; }
@@ -22,9 +40,9 @@
     header p { margin: 10px 0 0; font-size: 16px; opacity: 0.9; }
     
     /* القسم الرئيسي */
-    .hero { padding: 40px 20px; text-align: center; background: #e5f4e9; }
+    .hero { padding: 40px 20px; text-align: center; }
     .hero h2 { color: #087b48; margin-bottom: 10px; font-size: 26px; }
-    .hero p { font-size: 16px; line-height: 1.6; color: #333; max-width: 700px; margin: auto; }
+    .hero p { font-size: 16px; line-height: 1.6; color: #333; max-width: 700px; margin: auto; font-weight: bold; }
     
     /* الأقسام العامة */
     section { padding: 50px 20px; max-width: 1000px; margin: auto; }
@@ -32,12 +50,13 @@
     
     /* شبكة الخدمات */
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
-    .service-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #087b48; }
+    .service-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 4px solid #087b48; transition: 0.3s; }
+    .service-card:hover { transform: translateY(-5px); }
     .service-card h4 { color: #087b48; margin: 10px 0; font-size: 18px; }
     .service-card p { font-size: 13px; color: #666; margin: 0; }
 
     /* قسم علاش BRECOL */
-    .features-section { background: #24352b; padding: 50px 20px; color: white; border-radius: 15px; margin-bottom: 40px; }
+    .features-section { background: #24352b; padding: 50px 20px; color: white; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     .features-section h3 { color: white; margin-bottom: 40px; font-size: 28px; }
     .features-section h3 span { color: #4ade80; } 
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
@@ -47,7 +66,7 @@
     .feature-box h4 { font-size: 18px; margin: 10px 0; color: white; }
     .feature-box p { font-size: 14px; color: #a0b0a7; margin: 0; }
 
-    /* --- تصميم الفورمولير الجديد (بحال MIDO) --- */
+    /* --- تصميم الفورمولير --- */
     .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #1a1a1a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     
     .booking-form { background: #0f0f0f; padding: 30px; border-radius: 12px; border: 1px solid #333; }
@@ -61,7 +80,7 @@
     .booking-form button { width: 100%; padding: 15px; background: #087b48; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
     .booking-form button:hover { background: #065c36; }
 
-    /* النص الترويجي فالفورمولير (بحال MIDO) */
+    /* النص الترويجي فالفورمولير */
     .booking-info { padding: 20px; color: #a0b0a7; }
     .booking-info h4 { color: white; font-size: 22px; margin-top: 0; }
     .booking-info p { line-height: 1.8; font-size: 15px; margin-bottom: 15px; }
@@ -138,9 +157,8 @@
     </div>
 </section>
 
-<!-- قسم الحجز الجديد (بحال MIDO) -->
 <section id="booking">
-    <h3 style="text-align: right; color: white; margin-bottom: 20px;">Formulaire de réservation | نموذج الحجز</h3>
+    <h3 style="text-align: right; color: #fff; margin-bottom: 20px; text-shadow: 1px 1px 2px #000;">Formulaire de réservation | نموذج الحجز</h3>
     
     <div class="booking-container">
         <!-- الفورمولير -->
@@ -184,7 +202,7 @@
             </form>
         </div>
 
-        <!-- النص الترويجي (بحال MIDO) -->
+        <!-- النص الترويجي -->
         <div class="booking-info">
             <h4>مرحباً بكم في BRECOL!</h4>
             <p>شريكك الموثوق لتقديم خدمات الحرف والتنظيف بجودة عالية.</p>
@@ -206,7 +224,7 @@
 
 <script>
     // ⚠️ هنا كتب رقم الواتساب ديالك (بدل 212600000000 برقمك الحقيقي)
-    const MY_WHATSAPP_NUMBER = "212699225505"; 
+    const MY_WHATSAPP_NUMBER = "212600000000"; 
 
     // ضبط التاريخ الحالي باش ما يقبلش تواريخ قديمة
     const today = new Date();
