@@ -9,43 +9,86 @@
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { margin: 0; background: #f4f9f4; color: #24352b; }
     
-    /* الرأس (الهيدر) */
-    header { background: #087b48; color: white; padding: 20px; text-align: center; }
-    header h1 { margin: 0; font-size: 32px; letter-spacing: 2px; }
-    header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
+    /* القائمة الفوقية */
+    .navbar { background: #1a1a1a; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+    .navbar .logo-nav { color: white; font-size: 22px; font-weight: bold; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: #a0b0a7; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
+    .nav-links a:hover { color: #4ade80; }
+
+    /* الهيدر */
+    header { background: #087b48; color: white; padding: 40px 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 36px; letter-spacing: 2px; }
+    header p { margin: 10px 0 0; font-size: 16px; opacity: 0.9; }
     
     /* القسم الرئيسي */
     .hero { padding: 40px 20px; text-align: center; background: #e5f4e9; }
     .hero h2 { color: #087b48; margin-bottom: 10px; font-size: 26px; }
     .hero p { font-size: 16px; line-height: 1.6; color: #333; max-width: 700px; margin: auto; }
     
-    /* الأقسام */
-    section { padding: 30px 20px; max-width: 900px; margin: auto; }
-    h3 { text-align: center; color: #087b48; margin-bottom: 25px; font-size: 24px; }
+    /* الأقسام العامة */
+    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+    h3 { text-align: center; color: #087b48; margin-bottom: 30px; font-size: 26px; }
     
     /* شبكة الخدمات */
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; margin-bottom: 40px; }
-    .service-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; border-top: 4px solid #087b48; }
-    .service-card:hover { transform: translateY(-5px); }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
+    .service-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #087b48; }
     .service-card h4 { color: #087b48; margin: 10px 0; font-size: 18px; }
-    .service-card p { font-size: 13px; color: #666; margin: 0; line-height: 1.5; }
+    .service-card p { font-size: 13px; color: #666; margin: 0; }
+
+    /* قسم علاش BRECOL */
+    .features-section { background: #24352b; padding: 50px 20px; color: white; border-radius: 15px; margin-bottom: 40px; }
+    .features-section h3 { color: white; margin-bottom: 40px; font-size: 28px; }
+    .features-section h3 span { color: #4ade80; } 
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+    .feature-box { background: #1a261f; padding: 25px; border-radius: 12px; border: 1px solid #364a3e; text-align: center; transition: transform 0.3s; }
+    .feature-box:hover { transform: translateY(-5px); border-color: #4ade80; }
+    .feature-icon { font-size: 40px; margin-bottom: 15px; }
+    .feature-box h4 { font-size: 18px; margin: 10px 0; color: white; }
+    .feature-box p { font-size: 14px; color: #a0b0a7; margin: 0; }
+
+    /* --- تصميم الفورمولير الجديد (بحال MIDO) --- */
+    .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #1a1a1a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     
-    /* الفورمولير */
-    form { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 600px; margin: auto; }
-    .form-group { margin-bottom: 18px; }
-    label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 15px; color: #333; }
-    input, select, textarea { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; background: #fafafa; }
-    input:focus, select:focus, textarea:focus { border-color: #087b48; outline: none; background: white; }
+    .booking-form { background: #0f0f0f; padding: 30px; border-radius: 12px; border: 1px solid #333; }
+    .booking-form h4 { color: white; margin-top: 0; margin-bottom: 25px; font-size: 22px; border-bottom: 2px solid #087b48; padding-bottom: 10px; display: inline-block; }
     
-    /* الزر */
-    button { width: 100%; padding: 16px; background: #087b48; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-    button:hover { background: #065c36; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; color: #a0b0a7; font-size: 13px; margin-bottom: 5px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #444; border-radius: 6px; color: white; font-size: 14px; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #087b48; outline: none; background: #111; }
     
+    .booking-form button { width: 100%; padding: 15px; background: #087b48; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
+    .booking-form button:hover { background: #065c36; }
+
+    /* النص الترويجي فالفورمولير (بحال MIDO) */
+    .booking-info { padding: 20px; color: #a0b0a7; }
+    .booking-info h4 { color: white; font-size: 22px; margin-top: 0; }
+    .booking-info p { line-height: 1.8; font-size: 15px; margin-bottom: 15px; }
+    .booking-info ul { padding-right: 20px; line-height: 2; color: #d1d5db; }
+    .booking-info ul li { color: #4ade80; font-weight: bold; }
+
     /* التذييل */
     footer { background: #087b48; color: white; text-align: center; padding: 20px; margin-top: 50px; font-size: 14px; }
+
+    /* للهواتف */
+    @media (max-width: 768px) {
+        .booking-container { grid-template-columns: 1fr; padding: 20px; }
+        .nav-links { display: none; }
+    }
 </style>
 </head>
 <body>
+
+<nav class="navbar">
+    <a href="#" class="logo-nav">BRECOL</a>
+    <div class="nav-links">
+        <a href="#">الرئيسية | Home</a>
+        <a href="#services">الخدمات | Services</a>
+        <a href="#features">علاش BRECOL | A propos</a>
+        <a href="#booking">احجز الآن | Réserver</a>
+    </div>
+</nav>
 
 <header>
     <h1>BRECOL</h1>
@@ -57,90 +100,104 @@
     <p>نقدم لكم خدمات احترافية متنوعة: السباكة، الكهرباء، النجارة، الصباغة، التنظيف، وأكثر. احجز موعدك الآن بكل سهولة!</p>
 </div>
 
-<section>
+<section id="services">
     <h3>أقسامنا | Nos Métiers</h3>
     <div class="services">
-        <!-- الحرفة 1 -->
-        <div class="service-card">
-            <h4>🚰 السباكة</h4>
-            <p>إصلاح التسربات وتركيب الأدوات الصحية.</p>
+        <div class="service-card"><h4>🚰 السباكة</h4><p>إصلاح التسربات.</p></div>
+        <div class="service-card"><h4>⚡ الكهرباء</h4><p>تركيب وإصلاح.</p></div>
+        <div class="service-card"><h4>🪚 النجارة</h4><p>تصليح الأثاث.</p></div>
+        <div class="service-card"><h4>🎨 الصباغة</h4><p>دهن الجدران.</p></div>
+        <div class="service-card"><h4>🧱 البناء والتبليط</h4><p>الترميم والتبليط.</p></div>
+        <div class="service-card"><h4>🧹 التنظيف</h4><p>تنظيف شامل.</p></div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+    <h3>Pourquoi <span>BRECOL</span> ? | علاش BRECOL؟</h3>
+    <div class="features-grid">
+        <div class="feature-box">
+            <div class="feature-icon">⚡</div>
+            <h4>سرعة في الخدمة</h4>
+            <p>كنوصلو فآقرب وقت ممكن.</p>
         </div>
-        <!-- الحرفة 2 -->
-        <div class="service-card">
-            <h4>⚡ الكهرباء</h4>
-            <p>تركيب وإصلاح الشبكات الكهربائية.</p>
+        <div class="feature-box">
+            <div class="feature-icon">🛠️</div>
+            <h4>حرفيين معتمدين</h4>
+            <p>فريق ديال الحرفيين المهرة.</p>
         </div>
-        <!-- الحرفة 3 -->
-        <div class="service-card">
-            <h4>🪚 النجارة</h4>
-            <p>تصليح الأثاث وتركيب الأبواب والخزائن.</p>
+        <div class="feature-box">
+            <div class="feature-icon">💰</div>
+            <h4>أثمنة مناسبة</h4>
+            <p>جودة عالية بثمن معقول.</p>
         </div>
-        <!-- الحرفة 4 -->
-        <div class="service-card">
-            <h4>🎨 الصباغة</h4>
-            <p>دهن الجدران وتجديد ديكور المنازل.</p>
-        </div>
-        <!-- الحرفة 5 -->
-        <div class="service-card">
-            <h4>🧱 البناء والتبليط</h4>
-            <p>أشغال البناء، الترميم وتبليط الأرضيات.</p>
-        </div>
-        <!-- الحرفة 6 -->
-        <div class="service-card">
-            <h4>🧹 التنظيف</h4>
-            <p>تنظيف المنازل، المكاتب والزرابي.</p>
-        </div>
-        <!-- الحرفة 7 -->
-        <div class="service-card">
-            <h4>❄️ التبريد والتكييف</h4>
-            <p>إصلاح وصيانة المكيفات والثلاجات.</p>
-        </div>
-        <!-- الحرفة 8 -->
-        <div class="service-card">
-            <h4>🔧 صيانة عامة</h4>
-            <p>إصلاحات منزلية متنوعة وصيانة دورية.</p>
+        <div class="feature-box">
+            <div class="feature-icon">📞</div>
+            <h4>دعم متواصل</h4>
+            <p>كنتواصلو معاك فكل خطوة.</p>
         </div>
     </div>
+</section>
 
-    <h3>احجز خدمتك الآن | Réservez votre service</h3>
-    <form id="whatsappForm">
-        <div class="form-group">
-            <label>الاسم الكامل | Nom complet</label>
-            <input type="text" id="name" placeholder="سميتك الكاملة" required>
+<!-- قسم الحجز الجديد (بحال MIDO) -->
+<section id="booking">
+    <h3 style="text-align: right; color: white; margin-bottom: 20px;">Formulaire de réservation | نموذج الحجز</h3>
+    
+    <div class="booking-container">
+        <!-- الفورمولير -->
+        <div class="booking-form">
+            <h4>احجز خدمتك الآن</h4>
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <label>الاسم الكامل *</label>
+                    <input type="text" id="name" placeholder="سميتك الكاملة" required>
+                </div>
+
+                <div class="form-group">
+                    <label>نوع الخدمة *</label>
+                    <select id="service" required>
+                        <option value="">اختر الحرفة أو الخدمة</option>
+                        <option value="السباكة">السباكة</option>
+                        <option value="الكهرباء">الكهرباء</option>
+                        <option value="النجارة">النجارة</option>
+                        <option value="الصباغة">الصباغة</option>
+                        <option value="البناء والتبليط">البناء والتبليط</option>
+                        <option value="التنظيف">التنظيف</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>تاريخ الخدمة *</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>العنوان (المدينة والحي) *</label>
+                    <input type="text" id="address" placeholder="مثال: الدار البيضاء، المعاريف" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ملاحظات إضافية (اختياري)</label>
+                    <textarea id="notes" rows="3" placeholder="معلومات زايدة..."></textarea>
+                </div>
+
+                <button type="submit">إرسال الطلب عبر واتساب | Envoyer via WhatsApp</button>
+            </form>
         </div>
 
-        <div class="form-group">
-            <label>نوع الخدمة | Type de service</label>
-            <select id="service" required>
-                <option value="">اختر الحرفة أو الخدمة</option>
-                <option value="السباكة">السباكة</option>
-                <option value="الكهرباء">الكهرباء</option>
-                <option value="النجارة">النجارة</option>
-                <option value="الصباغة">الصباغة</option>
-                <option value="البناء والتبليط">البناء والتبليط</option>
-                <option value="التنظيف">التنظيف</option>
-                <option value="التبريد والتكييف">التبريد والتكييف</option>
-                <option value="صيانة عامة">صيانة عامة</option>
-            </select>
+        <!-- النص الترويجي (بحال MIDO) -->
+        <div class="booking-info">
+            <h4>مرحباً بكم في BRECOL!</h4>
+            <p>شريكك الموثوق لتقديم خدمات الحرف والتنظيف بجودة عالية.</p>
+            <p>واش كتقلب على حل لمشاكلك المنزلية؟ فريق BRECOL واجد باش يعاونك:</p>
+            <ul>
+                <li>✔️ حرفيين محترفين.</li>
+                <li>✔️ خدمات سريعة وفعالة.</li>
+                <li>✔️ أثمنة تنافسية.</li>
+                <li>✔️ ضمان على الخدمة.</li>
+            </ul>
+            <p><strong>احجز الآن واستفد من خدماتنا!</strong></p>
         </div>
-
-        <div class="form-group">
-            <label>تاريخ الخدمة | Date</label>
-            <input type="date" id="date" required>
-        </div>
-
-        <div class="form-group">
-            <label>العنوان (المدينة والحي) | Adresse</label>
-            <input type="text" id="address" placeholder="مثال: الدار البيضاء، المعاريف" required>
-        </div>
-
-        <div class="form-group">
-            <label>ملاحظات إضافية (اختياري) | Détails</label>
-            <textarea id="notes" rows="3" placeholder="معلومات زايدة..."></textarea>
-        </div>
-
-        <button type="submit">إرسال الطلب عبر واتساب | Envoyer via WhatsApp</button>
-    </form>
+    </div>
 </section>
 
 <footer>
@@ -149,8 +206,7 @@
 
 <script>
     // ⚠️ هنا كتب رقم الواتساب ديالك (بدل 212600000000 برقمك الحقيقي)
-    // ملاحظة: خاصك تحط الرقم بالصيغة الدولية بلا + ولا 00 (مثلاً 212612345678)
-    const MY_WHATSAPP_NUMBER = "212699225505";
+    const MY_WHATSAPP_NUMBER = "212699225505"; 
 
     // ضبط التاريخ الحالي باش ما يقبلش تواريخ قديمة
     const today = new Date();
@@ -160,16 +216,14 @@
     document.getElementById('date').min = localToday;
 
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // منع إعادة تحميل الصفحة
+        e.preventDefault();
 
-        // جلب المعلومات من الفورمولير
         const name = document.getElementById('name').value;
         const service = document.getElementById('service').value;
         const date = document.getElementById('date').value;
         const address = document.getElementById('address').value;
         const notes = document.getElementById('notes').value;
 
-        // صياغة الرسالة اللي غادي تمشي لواتساب
         const message = `مرحباً BRECOL،%0A%0A*طلب حجز جديد:*%0A` +
                         `👤 *الاسم:* ${name}%0A` +
                         `🛠️ *الخدمة:* ${service}%0A` +
@@ -177,10 +231,7 @@
                         `📍 *العنوان:* ${address}%0A` +
                         `📝 *ملاحظات:* ${notes ? notes : "لا يوجد"}`;
 
-        // إنشاء رابط واتساب
         const whatsappURL = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
-
-        // فتح واتساب
         window.open(whatsappURL, '_blank');
     });
 </script>
