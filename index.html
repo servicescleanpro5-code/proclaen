@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROClean | خدمات التنظيف</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f8f5;color:#24352b}
+header{background:#087b48;color:white;padding:22px;text-align:center}
+.logo{font-size:30px;font-weight:bold;letter-spacing:2px}
+header p{margin-bottom:0}
+nav{background:white;padding:14px;text-align:center}
+nav a{color:#087b48;text-decoration:none;margin:10px;font-weight:bold}
+.hero{padding:55px 20px;text-align:center;background:#e5f4e9}
+.hero h1{color:#087b48;font-size:32px}
+.hero p{font-size:18px;line-height:1.8}
+.btn{display:inline-block;background:#087b48;color:white;padding:13px 25px;border-radius:8px;text-decoration:none;margin-top:12px}
+section{padding:30px 18px;max-width:950px;margin:auto}
+h2{text-align:center;color:#087b48}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.service{background:white;padding:22px;border-radius:12px;text-align:center;box-shadow:0 2px 9px #ddd}
+.service h3{color:#087b48}
+form{background:white;padding:22px;border-radius:12px;box-shadow:0 2px 9px #ddd}
+input,select,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:7px;font-size:16px}
+button{width:100%;padding:15px;background:#087b48;color:white;border:0;border-radius:8px;font-size:17px;cursor:pointer}
+.note{text-align:center;color:#666;font-size:13px}
+footer{background:#087b48;color:white;text-align:center;padding:22px}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PROClean</div>
+<p>خدمات التنظيف الاحترافية | Services de nettoyage</p>
+</header>
+
+<nav>
+<a href="#services">خدماتنا</a>
+<a href="#booking">الحجز</a>
+<a href="#contact">اتصل بنا</a>
+</nav>
+
+<div class="hero">
+<h1>النظافة تبدأ من هنا</h1>
+<p>نقدم لكم خدمات تنظيف احترافية للزرابي والصالونات والسيارات والمنازل والمكاتب.</p>
+<a class="btn" href="#booking">احجز خدمتك الآن</a>
+</div>
+
+<section id="services">
+<h2>خدماتنا | Nos services</h2>
+
+<div class="services">
+<div class="service">
+<h3>🛋️ تنظيف الصالونات</h3>
+<p>تنظيف عميق وإزالة الأوساخ.</p>
+</div>
+
+<div class="service">
+<h3>🧼 تنظيف الزرابي</h3>
+<p>غسيل الزرابي والموكيت بعناية.</p>
+</div>
+
+<div class="service">
+<h3>🚗 تنظيف السيارات</h3>
+<p>تنظيف داخلي وخارجي.</p>
+</div>
+
+<div class="service">
+<h3>🏠 تنظيف المنازل</h3>
+<p>خدمات تنظيف المنازل والشقق.</p>
+</div>
+
+<div class="service">
+<h3>🏢 تنظيف المكاتب</h3>
+<p>تنظيف المحلات والمكاتب.</p>
+</div>
+
+<div class="service">
+<h3>🪟 تنظيف الزجاج</h3>
+<p>تنظيف الزجاج والواجهات.</p>
+</div>
+</div>
+</section>
+
+<section id="booking">
+<h2>احجز خدمتك الآن</h2>
+
+<form id="bookingForm">
+<input type="text" id="name" placeholder="الاسم الكامل" required>
+<input type="tel" id="phone" placeholder="رقم الهاتف" required>
+
+<select id="service" required>
+<option value="">اختر الخدمة</option>
+<option>تنظيف الصالونات</option>
+<option>تنظيف الزرابي</option>
+<option>تنظيف السيارات</option>
+<option>تنظيف المنازل</option>
+<option>تنظيف المكاتب</option>
+<option>تنظيف الزجاج</option>
+</select>
+
+<input type="date" id="date" required>
+<input type="time" id="time" required>
+<input type="text" id="address" placeholder="العنوان" required>
+<textarea id="notes" placeholder="ملاحظات إضافية"></textarea>
+
+<button type="submit">إرسال طلب الحجز</button>
+<p class="note">هذا نموذج تجريبي، لم يتم ربطه بعد بقاعدة البيانات.</p>
+</form>
+</section>
+
+<section id="contact">
+<h2>اتصل بنا</h2>
+<p style="text-align:center">PROClean – خدمات التنظيف الاحترافية</p>
+</section>
+
+<footer>
+<p>© 2026 PROClean - جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+e.preventDefault();
+alert("تم إدخال طلبك في النموذج التجريبي. لم يتم إرساله إلى الإدارة بعد.");
+});
+</script>
+
+</body>
+</html>
