@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BRECOL | خدماتنا</title>
+<title>BRECOL | خدمات الحرف والتنظيف</title>
 <style>
     /* التصميم العام */
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     
-    /* الخلفية (نفس الصورة اللي عندك) */
+    /* الخلفية */
     body { 
         margin: 0; 
         background-image: url('b58c1592-4907-4a5e-88f2-510c7029191c.png'); 
@@ -19,12 +19,12 @@
         color: #f8fafc; 
     }
 
-    /* الطبقة الشفافة باش الجدول يبان */
+    /* الطبقة الشفافة فوق الصورة */
     body::before {
         content: "";
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.7); /* كحلة شفافة */
+        background: rgba(15, 23, 42, 0.85); /* لون كحل داكن وشفاف */
         z-index: -1;
     }
 
@@ -35,32 +35,56 @@
     .nav-links a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { color: #fff; background: #1e293b; padding: 8px 15px; border-radius: 6px; }
 
-    /* الحاوية الرئيسية */
-    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-    
-    /* العنوان */
-    h1 { font-size: 28px; margin-bottom: 20px; font-weight: 600; text-shadow: 1px 1px 3px #000; color: #fff; }
-    
-    /* خانة البحث */
-    .search-box { width: 100%; padding: 15px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: white; font-size: 16px; margin-bottom: 20px; outline: none; transition: 0.3s; }
-    .search-box:focus { border-color: #3b82f6; }
+    /* الهيدر (الترحيب) */
+    header { text-align: center; padding: 60px 20px 40px; }
+    header h1 { color: #fff; font-size: 42px; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 1px 1px 3px #000; }
+    header p { color: #3b82f6; font-size: 18px; font-weight: bold; text-shadow: 1px 1px 2px #000; }
 
-    /* الجدول (بحال MIDO) */
-    .table-container { background: #0f172a; border-radius: 10px; overflow: hidden; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    table { width: 100%; border-collapse: collapse; text-align: right; }
-    th { background: #1e293b; color: #cbd5e1; padding: 15px 20px; font-weight: bold; font-size: 15px; border-bottom: 1px solid #334155; }
-    td { padding: 15px 20px; border-bottom: 1px solid #1e293b; color: #e2e8f0; font-size: 15px; }
-    tr:hover { background: #1e293b; }
-    td a { color: #3b82f6; text-decoration: none; font-weight: bold; }
-    td a:hover { text-decoration: underline; }
+    /* الأقسام العامة */
+    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+    h2 { text-align: center; color: #fff; margin-bottom: 40px; font-size: 30px; text-shadow: 1px 1px 2px #000; }
+    h2 span { color: #3b82f6; } 
+    
+    /* قسم علاش BRECOL (الكحل) */
+    .features-section { background: #0f172a; padding: 50px 20px; border-radius: 15px; margin-bottom: 40px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+    
+    /* الصناديق (الأيقونات التفاعلية) */
+    .feature-box { background: #1e293b; padding: 30px 20px; border-radius: 12px; border: 1px solid #334155; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+    .feature-box:hover { transform: translateY(-10px); background: #0f172a; border-color: #3b82f6; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
+    .feature-icon { font-size: 45px; margin-bottom: 15px; transition: transform 0.3s ease; display: inline-block; }
+    .feature-box:hover .feature-icon { transform: scale(1.2); } /* الأيقونة كتكبر */
+    .feature-box h4 { font-size: 20px; margin: 10px 0; color: #fff; }
+    .feature-box p { font-size: 14px; color: #94a3b8; margin: 0; }
+
+    /* --- تصميم الفورمولير --- */
+    .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #0f172a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #334155; }
+    
+    .booking-form h4 { color: #fff; margin-top: 0; margin-bottom: 25px; font-size: 22px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; display: inline-block; }
+    
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; color: #94a3b8; font-size: 13px; margin-bottom: 5px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px; background: #1e293b; border: 1px solid #334155; border-radius: 6px; color: white; font-size: 15px; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #3b82f6; outline: none; background: #0f172a; }
+    
+    .booking-form button { width: 100%; padding: 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
+    .booking-form button:hover { background: #2563eb; }
+
+    /* النص الترويجي فالفورمولير */
+    .booking-info { padding: 20px; color: #94a3b8; }
+    .booking-info h4 { color: #fff; font-size: 22px; margin-top: 0; }
+    .booking-info p { line-height: 1.8; font-size: 15px; margin-bottom: 15px; }
+    .booking-info ul { padding-right: 20px; line-height: 2; color: #cbd5e1; }
+    .booking-info ul li { color: #3b82f6; font-weight: bold; }
 
     /* التذييل */
-    footer { text-align: center; padding: 30px; color: #94a3b8; border-top: 1px solid #334155; margin-top: 50px; font-size: 14px; background: #0f172a; }
+    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px; margin-top: 50px; border-top: 1px solid #334155; font-size: 14px; }
+    footer p { margin: 5px 0; }
 
     /* للهواتف */
     @media (max-width: 768px) {
+        .booking-container { grid-template-columns: 1fr; padding: 20px; }
         .nav-links { display: none; }
-        th, td { padding: 10px; font-size: 14px; }
     }
 </style>
 </head>
@@ -69,67 +93,142 @@
 <nav class="navbar">
     <a href="index.html" class="logo-nav">BRECOL</a>
     <div class="nav-links">
-        <a href="index.html">الرئيسية | Home</a>
-        <a href="services.html" class="active">الخدمات | Services</a>
-        <a href="index.html#features">علاش BRECOL | A propos</a>
-        <a href="index.html#booking">احجز الآن | Réserver</a>
+        <a href="index.html" class="active">الرئيسية | Home</a>
+        <a href="services.html">الخدمات | Services</a>
+        <a href="#features">علاش BRECOL | A propos</a>
+        <a href="#booking">احجز الآن | Réserver</a>
     </div>
 </nav>
 
-<div class="container">
-    <h1>Liste de nos services | لائحة الخدمات</h1>
-    
-    <!-- خانة البحث -->
-    <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن خدمة... | Rechercher un service...">
+<header>
+    <h1>BRECOL</h1>
+    <p>جميع خدمات الحرف والتنظيف | Tous les services de bricolage</p>
+</header>
 
-    <!-- الجدول -->
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>الخدمة | Service</th>
-                    <th>القسم | Catégorie</th>
-                    <th>الإجراء | Action</th>
-                </tr>
-            </thead>
-            <tbody id="servicesTable">
-                <!-- الإلكترونيات -->
-                <tr><td>تركيب التلفزات</td><td>إلكترونيات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <tr><td>تركيب الكاميرات</td><td>إلكترونيات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <tr><td>تركيب الستلايت</td><td>إلكترونيات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <!-- الخيام -->
-                <tr><td>تركيب الخيام</td><td>خيام</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <!-- التقنية -->
-                <tr><td>التركيب والمونتاج</td><td>تقنية</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <tr><td>النقل</td><td>تقنية</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <!-- السيارات -->
-                <tr><td>غسيل السيارات</td><td>سيارات</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <!-- التنظيف -->
-                <tr><td>تنظيف شامل</td><td>تنظيف</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-                <tr><td>تنظيف الزجاج</td><td>تنظيف</td><td><a href="index.html#booking">احجز الآن</a></td></tr>
-            </tbody>
-        </table>
+<section id="features" class="features-section">
+    <h2>Pourquoi <span>BRECOL</span> ? | علاش BRECOL؟</h2>
+    <div class="features-grid">
+        <div class="feature-box">
+            <div class="feature-icon">⚡</div>
+            <h4>سرعة في الخدمة</h4>
+            <p>كنوصلو فآقرب وقت ممكن.</p>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon">🛠️</div>
+            <h4>حرفيين معتمدين</h4>
+            <p>فريق ديال الحرفيين المهرة.</p>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon">💰</div>
+            <h4>أثمنة مناسبة</h4>
+            <p>جودة عالية بثمن معقول.</p>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon">📞</div>
+            <h4>دعم متواصل</h4>
+            <p>كنتواصلو معاك فكل خطوة.</p>
+        </div>
     </div>
-</div>
+</section>
+
+<section id="booking">
+    <h2 style="text-align: right; margin-bottom: 20px;">Formulaire de réservation | نموذج الحجز</h2>
+    
+    <div class="booking-container">
+        <!-- الفورمولير -->
+        <div class="booking-form">
+            <h4>احجز خدمتك الآن</h4>
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <label>الاسم الكامل *</label>
+                    <input type="text" id="name" placeholder="سميتك الكاملة" required>
+                </div>
+
+                <div class="form-group">
+                    <label>نوع الخدمة *</label>
+                    <select id="service" required>
+                        <option value="">اختر الحرفة أو الخدمة</option>
+                        <option value="تركيب التلفزات">تركيب التلفزات</option>
+                        <option value="تركيب الكاميرات">تركيب الكاميرات</option>
+                        <option value="تركيب الستلايت">تركيب الستلايت</option>
+                        <option value="تركيب الخيام">تركيب الخيام</option>
+                        <option value="التركيب والمونتاج">التركيب والمونتاج</option>
+                        <option value="النقل">النقل</option>
+                        <option value="غسيل السيارات">غسيل السيارات</option>
+                        <option value="تنظيف شامل">تنظيف شامل</option>
+                        <option value="تنظيف الزجاج">تنظيف الزجاج</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>تاريخ الخدمة *</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>العنوان (المدينة والحي) *</label>
+                    <input type="text" id="address" placeholder="مثال: الدار البيضاء، المعاريف" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ملاحظات إضافية (اختياري)</label>
+                    <textarea id="notes" rows="3" placeholder="معلومات زايدة..."></textarea>
+                </div>
+
+                <button type="submit">إرسال الطلب عبر واتساب | Envoyer via WhatsApp</button>
+            </form>
+        </div>
+
+        <!-- النص الترويجي -->
+        <div class="booking-info">
+            <h4>مرحباً بكم في BRECOL!</h4>
+            <p>شريكك الموثوق لتقديم خدمات الحرف والتنظيف بجودة عالية.</p>
+            <p>واش كتقلب على حل لمشاكلك المنزلية؟ فريق BRECOL واجد باش يعاونك:</p>
+            <ul>
+                <li>✔️ حرفيين محترفين.</li>
+                <li>✔️ خدمات سريعة وفعالة.</li>
+                <li>✔️ أثمنة تنافسية.</li>
+                <li>✔️ ضمان على الخدمة.</li>
+            </ul>
+            <p><strong>احجز الآن واستفد من خدماتنا!</strong></p>
+        </div>
+    </div>
+</section>
 
 <footer>
     <p>© 2026 BRECOL - جميع الحقوق محفوظة</p>
+    <p>📞 للتواصل المباشر: 0699225505</p>
 </footer>
 
 <script>
-    // كود البحث في الجدول
-    document.getElementById('searchInput').addEventListener('keyup', function() {
-        let filter = this.value.toLowerCase();
-        let rows = document.querySelectorAll('#servicesTable tr');
-        
-        rows.forEach(row => {
-            let text = row.textContent.toLowerCase();
-            if(text.includes(filter)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
+    // الرقم ديال الواتساب
+    const MY_WHATSAPP_NUMBER = "212699225505"; 
+
+    // ضبط التاريخ الحالي باش ما يقبلش تواريخ قديمة
+    const today = new Date();
+    const localToday = today.getFullYear() + "-" + 
+                       String(today.getMonth() + 1).padStart(2, "0") + "-" + 
+                       String(today.getDate()).padStart(2, "0");
+    document.getElementById('date').min = localToday;
+
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const service = document.getElementById('service').value;
+        const date = document.getElementById('date').value;
+        const address = document.getElementById('address').value;
+        const notes = document.getElementById('notes').value;
+
+        const message = `مرحباً BRECOL،%0A%0A*طلب حجز جديد:*%0A` +
+                        `👤 *الاسم:* ${name}%0A` +
+                        `🛠️ *الخدمة:* ${service}%0A` +
+                        `📅 *التاريخ:* ${date}%0A` +
+                        `📍 *العنوان:* ${address}%0A` +
+                        `📝 *ملاحظات:* ${notes ? notes : "لا يوجد"}`;
+
+        const whatsappURL = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
+        window.open(whatsappURL, '_blank');
     });
 </script>
 
