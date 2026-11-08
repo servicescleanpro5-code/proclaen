@@ -26,9 +26,15 @@ h2{text-align:center;color:#087b48}
 form{background:white;padding:22px;border-radius:12px;box-shadow:0 2px 9px #ddd}
 input,select,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:7px;font-size:16px}
 button{width:100%;padding:15px;background:#087b48;color:white;border:0;border-radius:8px;font-size:17px;cursor:pointer}
+button:disabled{opacity:.6;cursor:not-allowed}
 .note{text-align:center;color:#666;font-size:13px}
+#message{text-align:center;padding:12px;border-radius:8px;display:none;line-height:1.7}
+.success{display:block!important;background:#e5f4e9;color:#087b48}
+.error{display:block!important;background:#ffe9e9;color:#a00000}
 footer{background:#087b48;color:white;text-align:center;padding:22px}
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -52,33 +58,27 @@ footer{background:#087b48;color:white;text-align:center;padding:22px}
 
 <section id="services">
 <h2>خدماتنا | Nos services</h2>
-
 <div class="services">
 <div class="service">
 <h3>🛋️ تنظيف الصالونات</h3>
 <p>تنظيف عميق وإزالة الأوساخ.</p>
 </div>
-
 <div class="service">
 <h3>🧼 تنظيف الزرابي</h3>
 <p>غسيل الزرابي والموكيت بعناية.</p>
 </div>
-
 <div class="service">
 <h3>🚗 تنظيف السيارات</h3>
 <p>تنظيف داخلي وخارجي.</p>
 </div>
-
 <div class="service">
 <h3>🏠 تنظيف المنازل</h3>
 <p>خدمات تنظيف المنازل والشقق.</p>
 </div>
-
 <div class="service">
 <h3>🏢 تنظيف المكاتب</h3>
 <p>تنظيف المحلات والمكاتب.</p>
 </div>
-
 <div class="service">
 <h3>🪟 تنظيف الزجاج</h3>
 <p>تنظيف الزجاج والواجهات.</p>
@@ -90,26 +90,29 @@ footer{background:#087b48;color:white;text-align:center;padding:22px}
 <h2>احجز خدمتك الآن</h2>
 
 <form id="bookingForm">
+
 <input type="text" id="name" placeholder="الاسم الكامل" required>
+
 <input type="tel" id="phone" placeholder="رقم الهاتف" required>
 
 <select id="service" required>
-<option value="">اختر الخدمة</option>
-<option>تنظيف الصالونات</option>
-<option>تنظيف الزرابي</option>
-<option>تنظيف السيارات</option>
-<option>تنظيف المنازل</option>
-<option>تنظيف المكاتب</option>
-<option>تنظيف الزجاج</option>
+<option value="">جاري تحميل الخدمات...</option>
 </select>
 
 <input type="date" id="date" required>
+
 <input type="time" id="time" required>
+
 <input type="text" id="address" placeholder="العنوان" required>
+
 <textarea id="notes" placeholder="ملاحظات إضافية"></textarea>
 
-<button type="submit">إرسال طلب الحجز</button>
-<p class="note">هذا نموذج تجريبي، لم يتم ربطه بعد بقاعدة البيانات.</p>
+<button type="submit" id="submitBtn">إرسال طلب الحجز</button>
+
+<p id="message"></p>
+
+<p class="note">سيتم إرسال طلبك مباشرة إلى إدارة PROClean.</p>
+
 </form>
 </section>
 
@@ -123,10 +126,138 @@ footer{background:#087b48;color:white;text-align:center;padding:22px}
 </footer>
 
 <script>
-document.getElementById("bookingForm").addEventListener("submit",function(e){
-e.preventDefault();
-alert("تم إدخال طلبك في النموذج التجريبي. لم يتم إرساله إلى الإدارة بعد.");
+// إعداد الاتصال بقاعدة البيانات
+const SUPABASE_URL = "https://sdalbrslfeebkcsjoquq.supabase.co";
+
+// ضع هنا Publishable key العام الخاص بمشروعك
+const SUPABASE_PUBLIضع_المفتاح_العام_هنا"04a508f1-3098-4bce-aa63-1f6c5d7323b9;
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const serviceSelect = document.getElementById("service");
+const bookingForm = document.getElementById("bookingForm");
+const submitBtn = document.getElementById("submitBtn");
+const message = document.getElementById("message");
+
+let servicesList = [];
+
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = type;
+}
+
+// تحميل الخدمات من Supabase
+async function loadServices() {
+  serviceSelect.innerHTML =
+    '<option value="">جاري تحميل الخدمات...</option>';
+
+  const { data, error } = await db
+    .from("services")
+    .select("id, name_ar, name_fr")
+    .eq("is_active", true)
+    .order("created_at");
+
+  if (error) {
+    serviceSelect.innerHTML =
+      '<option value="">تعذر تحميل الخدمات</option>';
+    console.error(error);
+    return;
+  }
+
+  servicesList = data || [];
+
+  serviceSelect.innerHTML =
+    '<option value="">اختر الخدمة</option>';
+
+  servicesList.forEach(function(service) {
+    const option = document.createElement("option");
+    option.value = service.id;
+    option.textContent = service.name_ar + " - " + service.name_fr;
+    serviceSelect.appendChild(option);
+  });
+
+  if (servicesList.length === 0) {
+    serviceSelect.innerHTML =
+      '<option value="">لا توجد خدمات متاحة حالياً</option>';
+  }
+}
+
+// منع اختيار تاريخ سابق
+const dateInput = document.getElementById("date");
+const today = new Date();
+const localToday =
+  today.getFullYear() + "-" +
+  String(today.getMonth() + 1).padStart(2, "0") + "-" +
+  String(today.getDate()).padStart(2, "0");
+
+dateInput.min = localToday;
+
+// إرسال الحجز
+bookingForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  message.className = "";
+  message.textContent = "";
+
+  const selectedService = servicesList.find(
+    service => service.id === serviceSelect.value
+  );
+
+  if (!selectedService) {
+    showMessage("المرجو اختيار خدمة صحيحة.", "error");
+    return;
+  }
+
+  if (dateInput.value < localToday) {
+    showMessage("المرجو اختيار تاريخ صحيح.", "error");
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "جاري إرسال الحجز...";
+
+  const booking = {
+    service_id: selectedService.id,
+    service_name: selectedService.name_ar,
+    customer_name: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    booking_date: dateInput.value,
+    booking_time: document.getElementById("time").value,
+    notes: document.getElementById("notes").value.trim() || null,
+    status: "new"
+  };
+
+  const { error } = await db
+    .from("bookings")
+    .insert([booking]);
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = "إرسال طلب الحجز";
+
+  if (error) {
+    console.error(error);
+    showMessage(
+      "تعذر إرسال الحجز. المرجو المحاولة مرة أخرى.",
+      "error"
+    );
+    return;
+  }
+
+  showMessage(
+    "تم إرسال طلبك بنجاح! شكراً لثقتك في PROClean.",
+    "success"
+  );
+
+  bookingForm.reset();
+  dateInput.min = localToday;
 });
+
+// تشغيل تحميل الخدمات
+loadServices();
 </script>
 
 </body>
