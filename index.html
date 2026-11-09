@@ -18,7 +18,7 @@
         color: #f8fafc; 
     }
 
-    /* الطبقة الشفافة الكحلة فوق الخلفية باش الكتابة تبان */
+    /* الطبقة الشفافة الكحلة فوق الخلفية */
     body::before {
         content: "";
         position: fixed;
@@ -41,7 +41,7 @@
     .nav-links a:last-child { border-bottom: none; }
     .nav-links a:hover { color: #fff; background: #3b82f6; border-radius: 6px; }
 
-    /* قسم الترحيب (Hero) - الصورة sora555 */
+    /* قسم الترحيب (Hero) - صورة sora555 */
     .hero { 
         width: 100%;
         height: 400px; 
@@ -179,8 +179,16 @@
     .booking-info ul { padding-right: 20px; line-height: 2; color: #cbd5e1; }
     .booking-info ul li { color: #3b82f6; font-weight: bold; }
 
-    /* التذييل */
-    footer { background: rgba(0, 0, 0, 0.9); color: #d1d5db; text-align: center; padding: 40px; margin-top: 50px; font-size: 16px; border-top: 1px solid #333; }
+    /* التذييل (Footer) الجديد */
+    footer { background: #0a0a0a; padding: 40px 20px; border-top: 1px solid #333; display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 20px; }
+    
+    .footer-item { display: flex; align-items: center; gap: 15px; }
+    .footer-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 22px; color: white; }
+    .footer-text { color: white; font-size: 16px; font-weight: bold; text-decoration: none; transition: 0.3s; }
+    .footer-text:hover { color: #3b82f6; }
+
+    /* حقوق النشر */
+    .copyright { background: #0a0a0a; text-align: center; padding: 15px; color: #94a3b8; font-size: 14px; border-top: 1px solid #222; }
 
     /* للهواتف */
     @media (max-width: 992px) {
@@ -191,6 +199,7 @@
         .hero { height: 250px; }
         .stat-card h3 { font-size: 45px; }
         .booking-container { grid-template-columns: 1fr; padding: 20px; }
+        footer { flex-direction: column; align-items: flex-start; padding: 30px 20px; }
     }
 </style>
 </head>
@@ -380,10 +389,45 @@
     </div>
 </section>
 
+<!-- 7. التذييل (Footer) الجديد -->
 <footer>
-    <p>© 2026 BRECOL - جميع الحقوق محفوظة</p>
-    <p>📞 للتواصل المباشر: 0699225505</p>
+    <!-- رقم الهاتف -->
+    <div class="footer-item">
+        <div class="footer-icon" style="background: #25D366;">
+            📞
+        </div>
+        <span class="footer-text">0699225505</span>
+    </div>
+
+    <!-- الإيميل -->
+    <div class="footer-item">
+        <div class="footer-icon" style="background: #3b82f6;">
+            ✉️
+        </div>
+        <span class="footer-text">contact@brecol.ma</span>
+    </div>
+
+    <!-- انستغرام -->
+    <div class="footer-item">
+        <div class="footer-icon" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);">
+            📸
+        </div>
+        <span class="footer-text">Brecol.ma</span>
+    </div>
+
+    <!-- فيسبوك -->
+    <div class="footer-item">
+        <div class="footer-icon" style="background: #1877F2;">
+            f
+        </div>
+        <span class="footer-text">Brecol.ma</span>
+    </div>
 </footer>
+
+<!-- حقوق النشر -->
+<div class="copyright">
+    <p>© 2026 BRECOL - جميع الحقوق محفوظة</p>
+</div>
 
 <script>
     // الرقم ديال الواتساب
