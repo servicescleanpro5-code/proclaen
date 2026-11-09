@@ -30,10 +30,10 @@
     /* القائمة الفوقية */
     .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
     
-    /* اللوگو */
+    /* اللوگو على اليمين */
     .navbar .logo-nav { color: white; font-size: 24px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
     
-    /* زر القائمة (3 خطوط) */
+    /* زر القائمة (3 خطوط) على اليسار */
     .menu-toggle { display: block; color: white; font-size: 30px; cursor: pointer; }
 
     /* القائمة ديال الروابط (كتتحل فوق من 3 خطوط) */
@@ -43,8 +43,8 @@
         width: 250px; 
         background: #1e293b; 
         position: absolute; 
-        top: 60px; /* كتبدا من تحت القائمة الفوقية مباشرة */
-        left: 20px; /* كتكون على اليسار حيت 3 خطوط كاينين على اليسار */
+        top: 65px; 
+        left: 30px; /* هنا درنا left باش تطلع على اليسار فوق 3 خطوط */
         padding: 15px;
         text-align: center;
         border-radius: 8px;
@@ -127,9 +127,10 @@
 <body>
 
 <nav class="navbar">
+    <!-- اللوگو على اليمين -->
     <a href="index.html" class="logo-nav">BRECOL</a>
     
-    <!-- زر القائمة (3 خطوط) على اليسار -->
+    <!-- زر القائمة على اليسار -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     
     <!-- القائمة كتتحل فوق من 3 خطوط -->
@@ -281,12 +282,10 @@
         window.open(whatsappURL, '_blank');
     });
 
-    // كود فتح وقفل القائمة
     function toggleMenu() {
         document.getElementById("nav-links").classList.toggle("active");
     }
 
-    // كود كيسد القائمة ملي نكليكيو على شي رابط فيها
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             document.getElementById("nav-links").classList.remove("active");
