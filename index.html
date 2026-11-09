@@ -52,45 +52,99 @@
     h2 { text-align: center; color: #fff; margin-bottom: 50px; font-size: 34px; }
     h2 span { color: #3b82f6; } 
     
+    /* --- تصميم الصناديق السوداء والتفاعل --- */
+    
     /* الخدمات (Grid) */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-    .service-card { background: #1e293b; padding: 40px 20px; border-radius: 12px; text-align: center; border: 1px solid #334155; transition: 0.3s; }
-    .service-card:hover { transform: translateY(-10px); border-color: #3b82f6; }
-    .service-card i { font-size: 40px; color: #3b82f6; margin-bottom: 20px; display: block; }
-    .service-card h3 { color: #fff; font-size: 22px; margin-bottom: 15px; }
-    .service-card p { color: #94a3b8; font-size: 15px; line-height: 1.6; }
+    .service-card { 
+        background: #000000; /* لون أسود */
+        padding: 40px 20px; 
+        border-radius: 12px; 
+        text-align: center; 
+        border: 1px solid #333; 
+        transition: all 0.3s ease; /* التفاعل */
+        cursor: pointer;
+    }
+    .service-card:hover { 
+        transform: translateY(-10px); /* كيطلع فوق */
+        border-color: #3b82f6; /* إطار أزرق */
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    }
+    .service-card i { font-size: 40px; color: #3b82f6; margin-bottom: 20px; display: block; transition: 0.3s; }
+    .service-card:hover i { transform: scale(1.2); } /* الأيقونة كتكبر */
+    .service-card h3 { color: #ffffff; font-size: 22px; margin-bottom: 15px; }
+    .service-card p { color: #d1d5db; font-size: 15px; line-height: 1.6; }
 
     /* علاش BRECOL (Features) */
-    .features-section { background: #0f172a; padding: 80px 20px; border-radius: 20px; margin: 40px auto; max-width: 1100px; border: 1px solid #1e293b; }
+    .features-section { background: #000000; padding: 80px 20px; border-radius: 20px; margin: 40px auto; max-width: 1100px; border: 1px solid #333; }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-    .feature-box { text-align: center; }
-    .feature-icon { font-size: 50px; margin-bottom: 15px; display: inline-block; }
-    .feature-box h4 { color: #fff; font-size: 20px; margin-bottom: 10px; }
-    .feature-box p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
+    .feature-box { 
+        text-align: center; 
+        padding: 30px 20px; 
+        border-radius: 12px; 
+        background: #111111; 
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    .feature-box:hover { 
+        transform: translateY(-10px); 
+        background: #1a1a1a;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+    .feature-icon { font-size: 50px; margin-bottom: 15px; display: inline-block; transition: 0.3s; }
+    .feature-box:hover .feature-icon { transform: scale(1.2); }
+    .feature-box h4 { color: #ffffff; font-size: 20px; margin-bottom: 10px; }
+    .feature-box p { color: #d1d5db; font-size: 14px; line-height: 1.6; }
 
     /* النسب (Stats) */
     .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; text-align: center; }
-    .stat-card { background: #111827; border: 1px solid #374151; border-radius: 16px; padding: 40px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .stat-card { 
+        background: #000000; 
+        border: 1px solid #333; 
+        border-radius: 16px; 
+        padding: 40px 20px; 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    .stat-card:hover { 
+        transform: translateY(-10px); 
+        border-color: #fff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
     .stat-icon { width: 60px; height: 60px; border-radius: 12px; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; font-size: 30px; }
-    .stat-card h3 { color: #64748b; font-size: 50px; font-weight: 800; margin-bottom: 10px; }
-    .stat-card h4 { color: #fff; font-size: 20px; margin-bottom: 15px; }
-    .stat-card p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
+    .stat-card h3 { color: #ffffff; font-size: 50px; font-weight: 800; margin-bottom: 10px; }
+    .stat-card h4 { color: #ffffff; font-size: 20px; margin-bottom: 15px; }
+    .stat-card p { color: #d1d5db; font-size: 14px; line-height: 1.6; }
 
     /* الخطوات (Process) */
     .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .process-card { background: #1e293b; padding: 30px 20px; border-radius: 12px; text-align: center; border-right: 4px solid #3b82f6; }
-    .process-card h4 { color: #fff; font-size: 18px; margin-bottom: 10px; }
-    .process-card p { color: #94a3b8; font-size: 14px; }
+    .process-card { 
+        background: #000000; 
+        padding: 30px 20px; 
+        border-radius: 12px; 
+        text-align: center; 
+        border-right: 4px solid #3b82f6; 
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    .process-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+    .process-card h4 { color: #ffffff; font-size: 18px; margin-bottom: 10px; }
+    .process-card p { color: #d1d5db; font-size: 14px; }
 
     /* قسم الحجز (Call to action) */
-    .cta-section { background: #3b82f6; padding: 60px 20px; text-align: center; border-radius: 15px; margin: 40px auto; max-width: 1000px; }
-    .cta-section h2 { color: #fff; margin-bottom: 20px; font-size: 32px; }
-    .cta-section p { color: #e0f2fe; font-size: 18px; margin-bottom: 30px; }
-    .cta-btn { display: inline-block; padding: 15px 40px; background: #fff; color: #3b82f6; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; transition: 0.3s; }
-    .cta-btn:hover { background: #f1f5f9; transform: scale(1.05); }
+    .cta-section { background: #000000; padding: 60px 20px; text-align: center; border-radius: 15px; margin: 40px auto; max-width: 1000px; border: 1px solid #333; transition: 0.3s; }
+    .cta-section:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+    .cta-section h2 { color: #ffffff; margin-bottom: 20px; font-size: 32px; }
+    .cta-section p { color: #d1d5db; font-size: 18px; margin-bottom: 30px; }
+    .cta-btn { display: inline-block; padding: 15px 40px; background: #ffffff; color: #000000; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; transition: 0.3s; }
+    .cta-btn:hover { background: #3b82f6; color: #ffffff; transform: scale(1.05); }
 
     /* التذييل */
-    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px; margin-top: 50px; font-size: 14px; border-top: 1px solid #1e293b; }
+    footer { background: #000000; color: #d1d5db; text-align: center; padding: 40px; margin-top: 50px; font-size: 14px; border-top: 1px solid #333; }
 
     /* للهواتف */
     @media (max-width: 768px) {
@@ -183,35 +237,28 @@
     </div>
 </section>
 
-<!-- 4. النسب الجديد (بحال الصورة) -->
+<!-- 4. النسب -->
 <section style="padding: 60px 20px; max-width: 1200px; margin: auto;">
     <h2>Garantie & Performance | <span>ضمان وأداء</span></h2>
     <div class="stats-grid">
-        
-        <!-- الصندوق الأول -->
         <div class="stat-card">
             <div class="stat-icon" style="background: #1e3a8a; color: #60a5fa;">🛡️</div>
             <h3>100%</h3>
             <h4>ثقة تامة | Confiance Totale</h4>
             <p>أمان مطلق وشفافية مستمرة في جميع خدماتنا.</p>
         </div>
-
-        <!-- الصندوق الثاني -->
         <div class="stat-card">
             <div class="stat-icon" style="background: #7f1d1d; color: #f87171;">⏱️</div>
             <h3>95%</h3>
             <h4>التزام بالمواعيد | Respect des Délais</h4>
             <p>احترام تام للمواعيد لضمان خدمة سريعة في الوقت المحدد.</p>
         </div>
-
-        <!-- الصندوق الثالث -->
         <div class="stat-card">
-            <div class="stat-icon" style="background: #1e293b; color: #fff;">👍</div>
+            <div class="stat-icon" style="background: #333; color: #fff;">👍</div>
             <h3>99%</h3>
             <h4>آراء إيجابية | Avis Positifs</h4>
             <p>رضا الزبون هو أساس عملياتنا اليومية.</p>
         </div>
-
     </div>
 </section>
 
