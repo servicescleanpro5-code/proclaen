@@ -31,9 +31,13 @@
     /* القائمة الفوقية */
     .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; }
     .navbar .logo-nav { color: white; font-size: 24px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
+    
     .nav-links { display: flex; gap: 25px; }
     .nav-links a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
     .nav-links a:hover, .nav-links a.active { color: #fff; background: #1e293b; padding: 8px 15px; border-radius: 6px; }
+
+    /* زر القائمة (مخفي فالحاسوب) */
+    .menu-toggle { display: none; color: white; font-size: 30px; cursor: pointer; }
 
     /* الهيدر (الترحيب) */
     header { text-align: center; padding: 60px 20px 40px; }
@@ -84,7 +88,23 @@
     /* للهواتف */
     @media (max-width: 768px) {
         .booking-container { grid-template-columns: 1fr; padding: 20px; }
-        .nav-links { display: none; }
+        
+        /* إخفاء القائمة وإظهار زر القائمة */
+        .nav-links { 
+            display: none; 
+            flex-direction: column;
+            width: 100%;
+            background: #0f172a;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            padding: 20px;
+            border-bottom: 1px solid #334155;
+            text-align: center;
+        }
+        
+        .nav-links.active { display: flex; }
+        .menu-toggle { display: block; }
     }
 </style>
 </head>
@@ -92,7 +112,8 @@
 
 <nav class="navbar">
     <a href="index.html" class="logo-nav">BRECOL</a>
-    <div class="nav-links">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="nav-links">
         <a href="index.html" class="active">الرئيسية | Home</a>
         <a href="services.html">الخدمات | Services</a>
         <a href="#features">علاش BRECOL | A propos</a>
@@ -136,7 +157,6 @@
     <h2 style="text-align: right; margin-bottom: 20px;">Formulaire de réservation | نموذج الحجز</h2>
     
     <div class="booking-container">
-        <!-- الفورمولير -->
         <div class="booking-form">
             <h4>احجز خدمتك الآن</h4>
             <form id="whatsappForm">
@@ -180,7 +200,6 @@
             </form>
         </div>
 
-        <!-- النص الترويجي -->
         <div class="booking-info">
             <h4>مرحباً بكم في BRECOL!</h4>
             <p>شريكك الموثوق لتقديم خدمات الحرف والتنظيف بجودة عالية.</p>
@@ -205,14 +224,14 @@
     // ⚠️ الرقم ديال الواتساب
     const MY_WHATSAPP_NUMBER = "212699225505"; 
 
-    // ضبط التاريخ الحالي باش ما يقبلش تواريخ قديمة
+    // ضبط التاريخ الحالي
     const today = new Date();
     const localToday = today.getFullYear() + "-" + 
                        String(today.getMonth() + 1).padStart(2, "0") + "-" + 
                        String(today.getDate()).padStart(2, "0");
     document.getElementById('date').min = localToday;
 
-    // 🎯 الكود اللي كيختار الخدمة أوتوماتيكياً من الرابط
+    // 🎯 اختيار الخدمة أوتوماتيكياً
     const urlParams = new URLSearchParams(window.location.search);
     const serviceParam = urlParams.get('service');
     
@@ -246,6 +265,12 @@
         const whatsappURL = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
         window.open(whatsappURL, '_blank');
     });
+
+    // كود فتح وقفل القائمة فالتيليفون
+    function toggleMenu() {
+        var navLinks = document.getElementById("nav-links");
+        navLinks.classList.toggle("active");
+    }
 </script>
 
 </body>
