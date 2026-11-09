@@ -29,9 +29,11 @@
 
     /* القائمة الفوقية */
     .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+    
+    /* اللوگو على اليمين */
     .navbar .logo-nav { color: white; font-size: 24px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
     
-    /* زر القائمة (3 خطوط) */
+    /* زر القائمة (3 خطوط) على اليسار */
     .menu-toggle { display: block; color: white; font-size: 30px; cursor: pointer; }
 
     /* القائمة ديال الروابط (نافذة صغيرة) */
@@ -42,7 +44,7 @@
         background: #1e293b; 
         position: absolute; 
         top: 65px; 
-        right: 20px; 
+        right: 20px; /* كتتحل على اليمين */
         padding: 15px;
         text-align: center;
         border-radius: 8px;
@@ -125,8 +127,13 @@
 <body>
 
 <nav class="navbar">
+    <!-- اللوگو على اليمين -->
     <a href="index.html" class="logo-nav">BRECOL</a>
+    
+    <!-- زر القائمة على اليسار -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    
+    <!-- القائمة -->
     <div class="nav-links" id="nav-links">
         <a href="index.html" class="active">الرئيسية | Home</a>
         <a href="services.html">الخدمات | Services</a>
