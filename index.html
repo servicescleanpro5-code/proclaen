@@ -212,13 +212,13 @@
                        String(today.getDate()).padStart(2, "0");
     document.getElementById('date').min = localToday;
 
-    // 🎯 الكود اللي كيختار الخدمة أوتوماتيكياً من الرابط (مع فك المسافات)
+    // 🎯 الكود اللي كيختار الخدمة أوتوماتيكياً من الرابط
     const urlParams = new URLSearchParams(window.location.search);
     const serviceParam = urlParams.get('service');
     
     if (serviceParam) {
         const selectElement = document.getElementById('service');
-        const decodedService = decodeURIComponent(serviceParam); // باش يفك المسافات (%20)
+        const decodedService = decodeURIComponent(serviceParam); // كيفك المسافات
         
         for (let i = 0; i < selectElement.options.length; i++) {
             if (selectElement.options[i].value === decodedService) {
