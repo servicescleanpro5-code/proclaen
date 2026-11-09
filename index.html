@@ -28,35 +28,15 @@
     .nav-links a:last-child { border-bottom: none; }
     .nav-links a:hover { color: #fff; background: #3b82f6; border-radius: 6px; }
 
-    /* قسم الترحيب (Hero) - الصورة فوق */
+    /* قسم الترحيب (Hero) - الصورة فقط */
     .hero { 
-        position: relative;
-        text-align: center; 
-        background-image: url('sora555.jpeg'); /* الصورة الجديدة هنا */
+        width: 100%;
+        height: 400px; /* طول الصورة */
+        background-image: url('sora555.jpeg'); 
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        padding: 150px 20px; /* مساحة باش تبان الصورة */
     }
-    
-    /* طبقة كحلة باش الكتابة تبان فوق الصورة */
-    .hero::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(15, 23, 42, 0.6); 
-        z-index: 1;
-    }
-
-    /* المحتوى فوق الطبقة الكحلة */
-    .hero-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .hero h1 { color: #fff; font-size: 52px; margin-bottom: 20px; font-weight: bold; }
-    .hero h1 span { color: #3b82f6; }
-    .hero p { color: #cbd5e1; font-size: 20px; line-height: 1.8; max-width: 800px; margin: 0 auto; }
 
     /* الأقسام العامة */
     section { padding: 80px 20px; max-width: 1200px; margin: auto; }
@@ -182,8 +162,7 @@
     }
     @media (max-width: 768px) {
         .services-grid { grid-template-columns: 1fr; }
-        .hero h1 { font-size: 38px; }
-        .hero { padding: 100px 20px; }
+        .hero { height: 250px; }
         .stat-card h3 { font-size: 45px; }
     }
 </style>
@@ -201,12 +180,8 @@
     </div>
 </nav>
 
-<!-- 1. الترحيب (بالصورة فوق) -->
+<!-- 1. الترحيب (الصورة فقط) -->
 <header class="hero">
-    <div class="hero-content">
-        <h1>مرحباً بكم في <span>BRECOL</span></h1>
-        <p>BRECOL هي شريكك الموثوق لجميع خدمات الحرف والتنظيف في المغرب. نضمن لكم خدمة سريعة، آمنة واحترافية فـ جميع المدن.</p>
-    </div>
 </header>
 
 <!-- 2. الخدمات (صور فقط بلا عناوين) -->
