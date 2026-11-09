@@ -105,7 +105,7 @@
     <p>نضع خبرتنا رهن إشارتكم لتقديم أفضل الخدمات | Notre expertise à votre service</p>
 </header>
 
-<!-- قسم علاش BRECOL (بحال MIDO) -->
+<!-- قسم علاش BRECOL -->
 <section id="features" class="features-section">
     <h2>Pourquoi <span>BRECOL</span> ? | علاش BRECOL؟</h2>
     <div class="features-grid">
@@ -202,7 +202,7 @@
 </footer>
 
 <script>
-    // الرقم ديال الواتساب
+    // ⚠️ الرقم ديال الواتساب
     const MY_WHATSAPP_NUMBER = "212699225505"; 
 
     // ضبط التاريخ الحالي باش ما يقبلش تواريخ قديمة
@@ -212,6 +212,22 @@
                        String(today.getDate()).padStart(2, "0");
     document.getElementById('date').min = localToday;
 
+    // 🎯 الكود اللي كيختار الخدمة أوتوماتيكياً من الرابط (URL)
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    
+    if (serviceParam) {
+        const selectElement = document.getElementById('service');
+        // كيقلب على الخدمة اللي فالرابط وكيختارها
+        for (let i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].value === serviceParam) {
+                selectElement.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    // إرسال الفورمولير لواتساب
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
