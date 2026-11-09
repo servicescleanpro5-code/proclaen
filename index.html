@@ -30,21 +30,21 @@
     /* القائمة الفوقية */
     .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
     
-    /* اللوگو على اليمين */
+    /* اللوگو */
     .navbar .logo-nav { color: white; font-size: 24px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
     
-    /* زر القائمة (3 خطوط) على اليسار */
+    /* زر القائمة (3 خطوط) */
     .menu-toggle { display: block; color: white; font-size: 30px; cursor: pointer; }
 
-    /* القائمة ديال الروابط (نافذة صغيرة) */
+    /* القائمة ديال الروابط (كتتحل فوق من 3 خطوط) */
     .nav-links { 
         display: none; 
         flex-direction: column;
         width: 250px; 
         background: #1e293b; 
         position: absolute; 
-        top: 65px; 
-        right: 20px; /* كتتحل على اليمين */
+        top: 60px; /* كتبدا من تحت القائمة الفوقية مباشرة */
+        left: 20px; /* كتكون على اليسار حيت 3 خطوط كاينين على اليسار */
         padding: 15px;
         text-align: center;
         border-radius: 8px;
@@ -86,7 +86,7 @@
     .features-section { background: #0f172a; padding: 50px 20px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
     
-    /* الصناديق (بلا خطوط) */
+    /* الصناديق */
     .feature-box { background: #1e293b; padding: 30px 20px; border-radius: 12px; text-align: center; transition: all 0.3s ease; cursor: pointer; }
     .feature-box:hover { transform: translateY(-10px); background: #0f172a; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
     .feature-icon { font-size: 45px; margin-bottom: 15px; transition: transform 0.3s ease; display: inline-block; }
@@ -127,13 +127,12 @@
 <body>
 
 <nav class="navbar">
-    <!-- اللوگو على اليمين -->
     <a href="index.html" class="logo-nav">BRECOL</a>
     
-    <!-- زر القائمة على اليسار -->
+    <!-- زر القائمة (3 خطوط) على اليسار -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     
-    <!-- القائمة -->
+    <!-- القائمة كتتحل فوق من 3 خطوط -->
     <div class="nav-links" id="nav-links">
         <a href="index.html" class="active">الرئيسية | Home</a>
         <a href="services.html">الخدمات | Services</a>
