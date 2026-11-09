@@ -149,15 +149,15 @@
                     <label>نوع الخدمة *</label>
                     <select id="service" required>
                         <option value="">اختر الحرفة أو الخدمة</option>
-                        <option value="تركيب التلفزات">تركيب التلفزات</option>
-                        <option value="تركيب الكاميرات">تركيب الكاميرات</option>
-                        <option value="تركيب الستلايت">تركيب الستلايت</option>
-                        <option value="تركيب الخيام">تركيب الخيام</option>
-                        <option value="التركيب والمونتاج">التركيب والمونتاج</option>
-                        <option value="النقل">النقل</option>
-                        <option value="غسيل السيارات">غسيل السيارات</option>
-                        <option value="تنظيف شامل">تنظيف شامل</option>
-                        <option value="تنظيف الزجاج">تنظيف الزجاج</option>
+                        <option value="Telfaza">تركيب التلفزات</option>
+                        <option value="Camera">تركيب الكاميرات</option>
+                        <option value="Satalite">تركيب الستلايت</option>
+                        <option value="Khayma">تركيب الخيام</option>
+                        <option value="Montage">التركيب والمونتاج</option>
+                        <option value="Na9l">النقل</option>
+                        <option value="Sayarat">غسيل السيارات</option>
+                        <option value="Tandif">تنظيف شامل</option>
+                        <option value="Zjaj">تنظيف الزجاج</option>
                     </select>
                 </div>
 
@@ -218,10 +218,8 @@
     
     if (serviceParam) {
         const selectElement = document.getElementById('service');
-        const decodedService = decodeURIComponent(serviceParam); // كيفك المسافات
-        
         for (let i = 0; i < selectElement.options.length; i++) {
-            if (selectElement.options[i].value === decodedService) {
+            if (selectElement.options[i].value === serviceParam) {
                 selectElement.selectedIndex = i;
                 break;
             }
