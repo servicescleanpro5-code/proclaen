@@ -41,12 +41,12 @@
     .nav-links a:last-child { border-bottom: none; }
     .nav-links a:hover { color: #fff; background: #3b82f6; border-radius: 6px; }
 
-    /* قسم الترحيب (Hero) */
+    /* قسم الترحيب (Hero) - الصورة الجديدة */
     .hero { 
         position: relative;
         width: 100%;
         height: 500px; 
-        background-image: url('sora555.jpeg'); 
+        background-image: url('sora55222.jpeg'); /* الصورة الجديدة هنا */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -392,17 +392,15 @@
     // إرسال الفورمولير لواتساب
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const name = document.getElementById('name').value;
-        const serviceSelect = document.getElementById('service');
-        const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text; // كياخد الكتابة اللي كيشوف الزبون
+        const service = document.getElementById('service').value;
         const date = document.getElementById('date').value;
         const address = document.getElementById('address').value;
         const notes = document.getElementById('notes').value;
 
         const message = `مرحباً BRECOL،%0A%0A*طلب حجز جديد:*%0A` +
                         `👤 *الاسم:* ${name}%0A` +
-                        `🛠️ *الخدمة:* ${serviceText}%0A` + // هنا كنصيفطو السمية بالعربية
+                        `🛠️ *الخدمة:* ${service}%0A` +
                         `📅 *التاريخ:* ${date}%0A` +
                         `📍 *العنوان:* ${address}%0A` +
                         `📝 *ملاحظات:* ${notes ? notes : "لا يوجد"}`;
