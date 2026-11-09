@@ -71,8 +71,6 @@
         transition: all 0.3s ease;
         cursor: pointer;
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
     }
     .service-card:hover { 
         transform: translateY(-10px); 
@@ -81,24 +79,15 @@
         box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
     }
     
-    /* تصميم الصورة */
+    /* تصميم الصورة (بلا عنوان) */
     .service-card img { 
         width: 100%; 
-        height: 250px; 
+        height: 300px; /* طول الصورة كامل */
         object-fit: cover; 
         transition: 0.3s;
         display: block;
     }
     .service-card:hover img { transform: scale(1.1); }
-
-    /* العنوان فقط */
-    .service-card h3 { 
-        color: #ffffff; 
-        font-size: 20px; 
-        padding: 15px; 
-        margin: 0;
-        background: rgba(0, 0, 0, 0.9);
-    }
 
     /* علاش BRECOL (Features) */
     .features-section { background: rgba(0, 0, 0, 0.4); padding: 80px 20px; border-radius: 20px; margin: 40px auto; max-width: 1200px; border: 1px solid rgba(255,255,255,0.1); }
@@ -206,39 +195,33 @@
     <p>BRECOL هي شريكك الموثوق لجميع خدمات الحرف والتنظيف في المغرب. نضمن لكم خدمة سريعة، آمنة واحترافية فـ جميع المدن.</p>
 </header>
 
-<!-- 2. الخدمات (صور وعناوين فقط) -->
+<!-- 2. الخدمات (صور فقط بلا عناوين) -->
 <section>
     <h2>Nos Métiers | <span>خدماتنا</span></h2>
     <div class="services-grid">
         
         <div class="service-card">
             <img src="sora1.jpeg" loading="lazy" alt="تركيب التلفزات">
-            <h3>تركيب التلفزات والكاميرات</h3>
         </div>
 
         <div class="service-card">
             <img src="sora2.jpeg" loading="lazy" alt="تركيب الخيام">
-            <h3>تركيب الخيام</h3>
         </div>
 
         <div class="service-card">
             <img src="sora3.png" loading="lazy" alt="التركيب والمونتاج">
-            <h3>التركيب والمونتاج</h3>
         </div>
 
         <div class="service-card">
             <img src="sora4.jpeg" loading="lazy" alt="غسيل السيارات">
-            <h3>غسيل السيارات</h3>
         </div>
 
         <div class="service-card">
             <img src="sora5.jpeg" loading="lazy" alt="التنظيف الشامل">
-            <h3>التنظيف الشامل</h3>
         </div>
 
         <div class="service-card">
             <img src="sora6.png" loading="lazy" alt="صيانة عامة">
-            <h3>صيانة عامة</h3>
         </div>
 
     </div>
