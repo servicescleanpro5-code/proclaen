@@ -5,30 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BRECOL | الأسئلة الشائعة</title>
 <style>
+    /* التصميم العام (نفس الصفحة الرئيسية والخدمات) */
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-    body { background-image: url('b58c1592-4907-4a5e-88f2-510c7029191c.png'); background-size: cover; background-attachment: fixed; background-position: center; color: #f8fafc; }
-    body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: -1; }
+    
+    /* خلفية الموقع (الكوزينة) */
+    body { 
+        background-image: url('b58c1592-4907-4a5e-88f2-510c7029191c.png'); 
+        background-size: cover; 
+        background-attachment: fixed; 
+        background-position: center; 
+        color: #f8fafc; 
+    }
+
+    /* الطبقة الشفافة الكحلة فوق الخلفية */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(15, 23, 42, 0.85); 
+        z-index: -1;
+    }
+
+    /* القائمة الفوقية */
     .navbar { background: rgba(15, 23, 42, 0.95); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1e293b; }
-    .navbar .logo-nav { color: white; font-size: 28px; font-weight: bold; text-decoration: none; }
+    .navbar .logo-nav { color: white; font-size: 28px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
+    
     .menu-toggle { display: block; color: white; font-size: 35px; cursor: pointer; }
-    .nav-links { display: none; flex-direction: column; width: 250px; background: #1e293b; position: absolute; top: 70px; left: 30px; padding: 15px; text-align: center; border-radius: 8px; }
+
+    .nav-links { 
+        display: none; flex-direction: column; width: 250px; background: #1e293b; position: absolute; top: 70px; left: 30px; padding: 15px; text-align: center; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.7); z-index: 999;
+    }
     .nav-links.active { display: flex; }
-    .nav-links a { color: #cbd5e1; text-decoration: none; padding: 12px; border-bottom: 1px solid #334155; }
+    .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 10px; border-bottom: 1px solid #334155; transition: 0.3s; }
+    .nav-links a:last-child { border-bottom: none; }
     .nav-links a:hover { color: #fff; background: #3b82f6; border-radius: 6px; }
+
+    /* عنوان الصفحة (نفس صفحة الخدمات) */
     .page-header { text-align: center; padding: 60px 20px 20px; }
-    .page-header h1 { color: #fff; font-size: 42px; margin-bottom: 10px; }
-    .page-header p { color: #3b82f6; font-size: 18px; }
+    .page-header h1 { color: #fff; font-size: 42px; margin-bottom: 10px; text-shadow: 1px 1px 3px #000; }
+    .page-header p { color: #3b82f6; font-size: 18px; font-weight: bold; }
+
+    /* الحاوية الرئيسية */
     .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    
+    /* الأسئلة الشائعة (FAQ) */
     .faq-section { display: flex; flex-direction: column; gap: 15px; }
-    .faq-card { background: rgba(0, 0, 0, 0.6); padding: 25px; border-radius: 12px; border: 1px solid #334155; }
+    .faq-card { 
+        background: #0f172a; 
+        padding: 25px; 
+        border-radius: 10px; 
+        border: 1px solid #334155; 
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .faq-card:hover {
+        border-color: #3b82f6;
+        background: #1e293b;
+    }
     .faq-card h4 { color: #3b82f6; font-size: 20px; margin-bottom: 10px; }
     .faq-card p { color: #d1d5db; font-size: 16px; line-height: 1.7; }
+
+    /* التذييل (Footer) */
     footer { background: #0a0a0a; padding: 40px 20px; border-top: 1px solid #333; display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 20px; margin-top: 80px; }
     .footer-item { display: flex; align-items: center; gap: 15px; }
     .footer-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 22px; color: white; }
-    .footer-text { color: white; font-size: 16px; font-weight: bold; text-decoration: none; }
+    .footer-text { color: white; font-size: 16px; font-weight: bold; text-decoration: none; transition: 0.3s; }
+    .footer-text:hover { color: #3b82f6; }
     .copyright { background: #0a0a0a; text-align: center; padding: 15px; color: #94a3b8; font-size: 14px; border-top: 1px solid #222; }
-    .floating-whatsapp { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; font-size: 30px; color: white; text-decoration: none; }
+
+    /* زر واتساب العائم */
+    .floating-whatsapp { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); z-index: 1000; transition: transform 0.3s ease; }
+    .floating-whatsapp:hover { transform: scale(1.1); }
+
+    /* للهواتف */
+    @media (max-width: 768px) {
+        .page-header h1 { font-size: 32px; }
+        footer { flex-direction: column; align-items: flex-start; padding: 30px 20px; }
+    }
 </style>
 </head>
 <body>
@@ -44,32 +97,44 @@
     </div>
 </nav>
 
+<!-- عنوان الصفحة -->
 <header class="page-header">
-    <h1>الأسئلة الشائعة</h1>
+    <h1>الأسئلة الشائعة | FAQ</h1>
     <p>أجوبة على الأسئلة اللي كتطرحوها علينا</p>
 </header>
 
 <div class="container">
     <div class="faq-section">
+        
         <div class="faq-card">
             <h4>واش الخدمة اللي كتقدموا فيها ضمان؟</h4>
             <p>إيه، كنقدمو ضمان على جميع الخدمات اللي كنقومو بيها، باش تكون مرتاح 100%.</p>
         </div>
+
         <div class="faq-card">
             <h4>شحال كتاخد باش تجيو لدار؟</h4>
-            <p>عادة كنكونو عندكم فأقرب وقت ممكن (من 24 لـ 48 ساعة).</p>
+            <p>عادة كنكونو عندكم فأقرب وقت ممكن (من 24 لـ 48 ساعة)، وكنتواصلو معاك باش نأكدو الموعد بالضبط.</p>
         </div>
+
         <div class="faq-card">
             <h4>واش كتخدمو فبوسكورة والدار البيضاء فقط؟</h4>
-            <p>غالباً كنخدمو فبوسكورة، الدار البيضاء والمناطق المجاورة.</p>
+            <p>غالباً كنخدمو فبوسكورة، الدار البيضاء والمناطق المجاورة، ولكن يلا كان شي طلب خاص، تواصلو معانا.</p>
         </div>
+
         <div class="faq-card">
             <h4>كيفاش نقدر نخلص الخدمة؟</h4>
-            <p>إما كاش عند إتمام الخدمة، ولا بالتحويل البنكي.</p>
+            <p>الخلاص كيكون إما كاش عند إتمام الخدمة، ولا بالتحويل البنكي. كنوفرولك الفاتورة على كل خدمة.</p>
         </div>
+
+        <div class="faq-card">
+            <h4>واش كتقدرو تجيو فالويكاند؟</h4>
+            <p>إيه، كنخدمو من الاثنين للسبت. الأحد كيكون مخصص للحالات المستعجلة فقط.</p>
+        </div>
+
     </div>
 </div>
 
+<!-- التذييل (Footer) -->
 <footer>
     <div class="footer-item"><div class="footer-icon" style="background: #25D366;">📞</div><span class="footer-text">0699225505</span></div>
     <div class="footer-item"><div class="footer-icon" style="background: #3b82f6;">✉️</div><span class="footer-text">contact@brecol.ma</span></div>
@@ -77,15 +142,27 @@
     <div class="footer-item"><div class="footer-icon" style="background: #1877F2;">f</div><span class="footer-text">Brecol.ma</span></div>
 </footer>
 
-<div class="copyright"><p>© 2026 BRECOL - جميع الحقوق محفوظة</p></div>
+<div class="copyright">
+    <p>© 2026 BRECOL - جميع الحقوق محفوظة</p>
+</div>
 
-<a href="https://wa.me/212699225505" target="_blank" class="floating-whatsapp">💬</a>
+<!-- زر واتساب العائم -->
+<a href="https://wa.me/212699225505" target="_blank" class="floating-whatsapp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="35" height="35" fill="white">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+</a>
 
 <script>
-    function toggleMenu() { document.getElementById("nav-links").classList.toggle("active"); }
+    function toggleMenu() {
+        document.getElementById("nav-links").classList.toggle("active");
+    }
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => { document.getElementById("nav-links").classList.remove("active"); });
+        link.addEventListener('click', () => {
+            document.getElementById("nav-links").classList.remove("active");
+        });
     });
 </script>
+
 </body>
 </html>
