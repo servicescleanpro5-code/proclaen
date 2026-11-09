@@ -6,11 +6,10 @@
 <title>BRECOL | خدمات الحرف والتنظيف</title>
 <style>
     /* التصميم العام */
-    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
     
     /* الخلفية */
     body { 
-        margin: 0; 
         background-image: url('b58c1592-4907-4a5e-88f2-510c7029191c.png'); 
         background-size: cover; 
         background-attachment: fixed; 
@@ -29,15 +28,32 @@
     }
 
     /* القائمة الفوقية */
-    .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; }
+    .navbar { background: #0f172a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
     .navbar .logo-nav { color: white; font-size: 24px; font-weight: bold; text-decoration: none; letter-spacing: 1px; }
     
-    .nav-links { display: flex; gap: 25px; }
-    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
-    .nav-links a:hover, .nav-links a.active { color: #fff; background: #1e293b; padding: 8px 15px; border-radius: 6px; }
+    /* زر القائمة (3 خطوط) */
+    .menu-toggle { display: block; color: white; font-size: 30px; cursor: pointer; }
 
-    /* زر القائمة (مخفي فالحاسوب) */
-    .menu-toggle { display: none; color: white; font-size: 30px; cursor: pointer; }
+    /* القائمة ديال الروابط */
+    .nav-links { 
+        display: none; /* مخفية فالبداية */
+        flex-direction: column;
+        width: 100%;
+        background: #0f172a;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+        z-index: 999;
+    }
+    
+    /* ملي نكليكيو على الزر، القائمة كتبان */
+    .nav-links.active { display: flex; }
+
+    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px; transition: 0.3s; border-bottom: 1px solid #1e293b; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: #1e293b; border-radius: 6px; }
 
     /* الهيدر (الترحيب) */
     header { text-align: center; padding: 60px 20px 40px; }
@@ -50,26 +66,26 @@
     h2 span { color: #3b82f6; } 
     
     /* قسم علاش BRECOL (الصناديق) */
-    .features-section { background: #0f172a; padding: 50px 20px; border-radius: 15px; margin-bottom: 40px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .features-section { background: #0f172a; padding: 50px 20px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
     
-    /* الصناديق (الأيقونات التفاعلية) */
-    .feature-box { background: #1e293b; padding: 30px 20px; border-radius: 12px; border: 1px solid #334155; text-align: center; transition: all 0.3s ease; cursor: pointer; }
-    .feature-box:hover { transform: translateY(-10px); background: #0f172a; border-color: #3b82f6; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
+    /* الصناديق (بلا خطوط) */
+    .feature-box { background: #1e293b; padding: 30px 20px; border-radius: 12px; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+    .feature-box:hover { transform: translateY(-10px); background: #0f172a; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
     .feature-icon { font-size: 45px; margin-bottom: 15px; transition: transform 0.3s ease; display: inline-block; }
     .feature-box:hover .feature-icon { transform: scale(1.2); }
     .feature-box h4 { font-size: 20px; margin: 10px 0; color: #fff; }
-    .feature-box p { font-size: 14px; color: #94a3b8; margin: 0; }
+    .feature-box p { font-size: 14px; color: #94a3b8; }
 
     /* --- تصميم الفورمولير --- */
-    .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #0f172a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #334155; }
+    .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #0f172a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     
     .booking-form h4 { color: #fff; margin-top: 0; margin-bottom: 25px; font-size: 22px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; display: inline-block; }
     
     .form-group { margin-bottom: 15px; }
     .form-group label { display: block; color: #94a3b8; font-size: 13px; margin-bottom: 5px; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px; background: #1e293b; border: 1px solid #334155; border-radius: 6px; color: white; font-size: 15px; transition: 0.3s; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #3b82f6; outline: none; background: #0f172a; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px; background: #1e293b; border: none; border-radius: 6px; color: white; font-size: 15px; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: 2px solid #3b82f6; background: #0f172a; }
     
     .booking-form button { width: 100%; padding: 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
     .booking-form button:hover { background: #2563eb; }
@@ -82,29 +98,12 @@
     .booking-info ul li { color: #3b82f6; font-weight: bold; }
 
     /* التذييل */
-    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px; margin-top: 50px; border-top: 1px solid #334155; font-size: 14px; }
+    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px; margin-top: 50px; font-size: 14px; }
     footer p { margin: 5px 0; }
 
     /* للهواتف */
     @media (max-width: 768px) {
         .booking-container { grid-template-columns: 1fr; padding: 20px; }
-        
-        /* إخفاء القائمة وإظهار زر القائمة */
-        .nav-links { 
-            display: none; 
-            flex-direction: column;
-            width: 100%;
-            background: #0f172a;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            padding: 20px;
-            border-bottom: 1px solid #334155;
-            text-align: center;
-        }
-        
-        .nav-links.active { display: flex; }
-        .menu-toggle { display: block; }
     }
 </style>
 </head>
@@ -221,17 +220,14 @@
 </footer>
 
 <script>
-    // ⚠️ الرقم ديال الواتساب
     const MY_WHATSAPP_NUMBER = "212699225505"; 
 
-    // ضبط التاريخ الحالي
     const today = new Date();
     const localToday = today.getFullYear() + "-" + 
                        String(today.getMonth() + 1).padStart(2, "0") + "-" + 
                        String(today.getDate()).padStart(2, "0");
     document.getElementById('date').min = localToday;
 
-    // 🎯 اختيار الخدمة أوتوماتيكياً
     const urlParams = new URLSearchParams(window.location.search);
     const serviceParam = urlParams.get('service');
     
@@ -245,10 +241,8 @@
         }
     }
 
-    // إرسال الفورمولير لواتساب
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
         e.preventDefault();
-
         const name = document.getElementById('name').value;
         const service = document.getElementById('service').value;
         const date = document.getElementById('date').value;
@@ -266,10 +260,8 @@
         window.open(whatsappURL, '_blank');
     });
 
-    // كود فتح وقفل القائمة فالتيليفون
     function toggleMenu() {
-        var navLinks = document.getElementById("nav-links");
-        navLinks.classList.toggle("active");
+        document.getElementById("nav-links").classList.toggle("active");
     }
 </script>
 
