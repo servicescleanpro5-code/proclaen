@@ -71,6 +71,8 @@
         transition: all 0.3s ease;
         cursor: pointer;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
     .service-card:hover { 
         transform: translateY(-10px); 
@@ -82,15 +84,25 @@
     /* تصميم الصورة */
     .service-card img { 
         width: 100%; 
-        height: 200px; 
+        height: 250px; 
         object-fit: cover; 
         transition: 0.3s;
+        display: block;
     }
     .service-card:hover img { transform: scale(1.1); }
 
-    .service-content { padding: 25px 20px; }
-    .service-card h3 { color: #ffffff; font-size: 22px; margin-bottom: 15px; }
-    .service-card p { color: #d1d5db; font-size: 15px; line-height: 1.8; }
+    /* العنوان فقط */
+    .service-card h3 { 
+        color: #ffffff; 
+        font-size: 22px; 
+        padding: 20px; 
+        margin: 0;
+        background: rgba(0, 0, 0, 0.9);
+        flex-grow: 1; /* باش ياخد الطول كامل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     /* علاش BRECOL (Features) */
     .features-section { background: rgba(0, 0, 0, 0.4); padding: 80px 20px; border-radius: 20px; margin: 40px auto; max-width: 1200px; border: 1px solid rgba(255,255,255,0.1); }
@@ -198,63 +210,39 @@
     <p>BRECOL هي شريكك الموثوق لجميع خدمات الحرف والتنظيف في المغرب. نضمن لكم خدمة سريعة، آمنة واحترافية فـ جميع المدن.</p>
 </header>
 
-<!-- 2. الخدمات (بالصور والجمل الطويلة) -->
+<!-- 2. الخدمات (صور وعناوين فقط) -->
 <section>
     <h2>Nos Métiers | <span>خدماتنا</span></h2>
     <div class="services-grid">
         
-        <!-- الخدمة 1 -->
         <div class="service-card">
             <img src="sora1.jpeg" alt="تركيب التلفزات">
-            <div class="service-content">
-                <h3>تركيب التلفزات والكاميرات</h3>
-                <p>نقوم بتركيب جميع أنواع التلفزات على الحيط أو الحاملات، بالإضافة إلى تركيب وبرمجة كاميرات المراقبة وأنظمة الستلايت بأعلى معايير الجودة والاحترافية لضمان أمان وراحة منزلك.</p>
-            </div>
+            <h3>تركيب التلفزات والكاميرات</h3>
         </div>
 
-        <!-- الخدمة 2 -->
         <div class="service-card">
             <img src="sora2.jpeg" alt="تركيب الخيام">
-            <div class="service-content">
-                <h3>تركيب الخيام</h3>
-                <p>خدمة متكاملة لتركيب وفك خيام الأعراس، الحفلات والمناسبات الخاصة. نضمن لك تركيباً سريعاً وآمناً مع تغطية شاملة لجميع احتياجاتك اللوجستية لضمان نجاح مناسبتك.</p>
-            </div>
+            <h3>تركيب الخيام</h3>
         </div>
 
-        <!-- الخدمة 3 -->
         <div class="service-card">
             <img src="sora3.png" alt="التركيب والمونتاج">
-            <div class="service-content">
-                <h3>التركيب والمونتاج</h3>
-                <p>فريق متخصص في تركيب ومونتاج جميع أنواع الأثاث والأجهزة المنزلية. كما نقدم خدمات نقل العفش والأثاث بسرعة وحرفية عالية، مع الحرص التام على سلامة ممتلكاتك.</p>
-            </div>
+            <h3>التركيب والمونتاج</h3>
         </div>
 
-        <!-- الخدمة 4 -->
         <div class="service-card">
             <img src="sora4.jpeg" alt="غسيل السيارات">
-            <div class="service-content">
-                <h3>غسيل السيارات</h3>
-                <p>نقدم خدمات غسيل وتنظيف السيارات من الداخل والخارج باستخدام أفضل المواد وأحدث المعدات. نهتم بأدق التفاصيل لترك سيارتك نظيفة ولامعة وكأنها جديدة.</p>
-            </div>
+            <h3>غسيل السيارات</h3>
         </div>
 
-        <!-- الخدمة 5 -->
         <div class="service-card">
             <img src="sora5.jpeg" alt="التنظيف الشامل">
-            <div class="service-content">
-                <h3>التنظيف الشامل</h3>
-                <p>خدمات تنظيف عميقة للمنازل، الشقق والمكاتب. نقوم بتنظيف الزرابي، الموكيت، الأرضيات والواجهات الزجاجية باستخدام تقنيات حديثة لضمان بيئة صحية ونظيفة لك ولعائلتك.</p>
-            </div>
+            <h3>التنظيف الشامل</h3>
         </div>
 
-        <!-- الخدمة 6 -->
         <div class="service-card">
             <img src="sora6.png" alt="صيانة عامة">
-            <div class="service-content">
-                <h3>صيانة عامة</h3>
-                <p>نقدم خدمات صيانة وإصلاحات منزلية متنوعة تشمل السباكة، الكهرباء، والنجارة. فريقنا جاهز للتدخل السريع لحل أي مشكل في منزلك بأسعار تنافسية وضمان على الخدمة.</p>
-            </div>
+            <h3>صيانة عامة</h3>
         </div>
 
     </div>
