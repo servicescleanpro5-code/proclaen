@@ -36,13 +36,13 @@
 
     /* القائمة ديال الروابط (نافذة صغيرة) */
     .nav-links { 
-        display: none; /* مخفية فالبداية */
+        display: none; 
         flex-direction: column;
-        width: 250px; /* عرض النافذة */
+        width: 250px; 
         background: #1e293b; 
         position: absolute; 
-        top: 65px; /* كتبدا من تحت القائمة الفوقية */
-        right: 20px; /* كتكون على اليمين */
+        top: 65px; 
+        right: 20px; 
         padding: 15px;
         text-align: center;
         border-radius: 8px;
@@ -50,7 +50,6 @@
         z-index: 999;
     }
     
-    /* ملي نكليكيو على الزر، القائمة كتبان */
     .nav-links.active { display: flex; }
 
     .nav-links a { 
@@ -63,7 +62,7 @@
         transition: 0.3s; 
     }
     
-    .nav-links a:last-child { border-bottom: none; } /* تحيد الخط من آخر رابط */
+    .nav-links a:last-child { border-bottom: none; }
     
     .nav-links a:hover, .nav-links a.active { 
         color: #fff; 
@@ -276,9 +275,17 @@
         window.open(whatsappURL, '_blank');
     });
 
+    // كود فتح وقفل القائمة
     function toggleMenu() {
         document.getElementById("nav-links").classList.toggle("active");
     }
+
+    // كود كيسد القائمة ملي نكليكيو على شي رابط فيها
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById("nav-links").classList.remove("active");
+        });
+    });
 </script>
 
 </body>
